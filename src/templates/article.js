@@ -13,12 +13,14 @@ const ArticleTemplate = ({ data }) => (
         {data.strapiArticle.author.username}
       </Link>
     </p>
-    <Img fluid={data.strapiArticle.image.childImageSharp.fluid} />
+    {/* <Img fluid={data.strapiArticle.image.childImageSharp.fluid} /> */}
+    <Img fluid={data.strapiArticle.image.url} />
+    <img src={data.strapiArticle.image.url} />
     <ReactMarkdown
-      source={document.node.content}
-      transformImageUri={uri =>
-        uri.startsWith('http') ? uri : `${process.env.IMAGE_BASE_URL}${uri}`
-      }
+      source={data.strapiArticle.content}
+      // transformImageUri={uri =>
+      //   uri.startsWith('http') ? uri : `${process.env.IMAGE_BASE_URL}${uri}`
+      // }
     />
   </Layout>
 )
@@ -31,12 +33,15 @@ export const query = graphql`
       title
       content
       image {
-        childImageSharp {
-          fluid(maxWidth: 960) {
-            ...GatsbyImageSharpFluid
-          }
-        }
+        url
       }
+      # image {
+      #   childImageSharp {
+      #     fluid(maxWidth: 960) {
+      #       ...GatsbyImageSharpFluid
+      #     }
+      #   }
+      # }
       author {
         id
         username

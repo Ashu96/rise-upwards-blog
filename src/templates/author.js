@@ -13,12 +13,12 @@ const UserTemplate = ({ data }) => (
             <Link to={`/Article_${article.id}`}>{article.title}</Link>
           </h2>
           <ReactMarkdown
-            source={document.node.content}
-            transformImageUri={uri =>
-              uri.startsWith('http')
-                ? uri
-                : `${process.env.IMAGE_BASE_URL}${uri}`
-            }
+            source={article.content}
+            // transformImageUri={uri =>
+            //   uri.startsWith('http')
+            //     ? uri
+            //     : `${process.env.IMAGE_BASE_URL}${uri}`
+            // }
           />
         </li>
       ))}

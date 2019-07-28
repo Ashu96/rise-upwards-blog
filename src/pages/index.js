@@ -15,14 +15,16 @@ const IndexPage = ({ data }) => (
           <h2>
             <Link to={`/${document.node.id}`}>{document.node.title}</Link>
           </h2>
-          <Img fluid={data.strapiArticle.image.childImageSharp.fluid} />
+          {/* <Img fluid={document.node.image.childImageSharp.fluid} /> */}
+          <Img fluid={document.node.image.url} />
+          <img src={document.node.image.url} />
           <ReactMarkdown
             source={document.node.content}
-            transformImageUri={uri =>
-              uri.startsWith('http')
-                ? uri
-                : `${process.env.IMAGE_BASE_URL}${uri}`
-            }
+            // transformImageUri={uri =>
+            //   uri.startsWith('http')
+            //     ? uri
+            //     : `${process.env.IMAGE_BASE_URL}${uri}`
+            // }
           />
         </li>
       ))}
@@ -41,12 +43,15 @@ export const pageQuery = graphql`
         node {
           id
           image {
-            childImageSharp {
-              fluid(maxWidth: 500) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+            url
           }
+          # image {
+          #   childImageSharp {
+          #     fluid(maxWidth: 500) {
+          #       ...GatsbyImageSharpFluid
+          #     }
+          #   }
+          # }
           title
           content
         }
