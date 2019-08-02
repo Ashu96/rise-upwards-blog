@@ -80,7 +80,7 @@ function List({ images }) {
 
 function getPublicUrl(url) {
   const baseURL = process.env.DEPLOY_URL
-    ? 'https://rise-upwards.herokuapp.com'
+    ? ''
     : 'http://localhost:1337'
 
   return `${baseURL}${url}`
