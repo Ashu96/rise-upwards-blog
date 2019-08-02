@@ -1,4 +1,5 @@
 import { Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from 'styled-components'
@@ -46,6 +47,16 @@ const HeaderContainer = Styled.header`
 
 const Header = ({ siteTitle }) => (
   <HeaderContainer className="container-fluid nav-header">
+    <Helmet>
+      <meta charSet="utf-8" />
+      <meta lang="en-us" />
+      <meta
+        name="description"
+        content="Uprise is a proactive and science-based Employee Assistance Program (EAP) 
+provider in Australia."
+      />
+      <title>{siteTitle}</title>
+    </Helmet>
     <div className="container">
       <div className="row">
         <div className="col-8 d-flex align-items-center ">
@@ -144,11 +155,16 @@ function Menu() {
 
   return (
     <MenuContainer>
-      <button onClick={() => toggleOpen(!open)}>
+      <button aria-label="navigation-menu" onClick={() => toggleOpen(!open)}>
         {!open ? (
-          <img className="menu-icon" src={require('../images/menu.svg')} />
+          <img
+            alt="burger"
+            className="menu-icon"
+            src={require('../images/menu.svg')}
+          />
         ) : (
           <img
+            alt="close"
             className="menu-icon close"
             src={require('../images/close.svg')}
           />

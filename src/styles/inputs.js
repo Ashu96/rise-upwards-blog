@@ -139,7 +139,7 @@ export function TextInput({ id, label, isRequired }) {
           required={isRequired}
         />
         <span className="highlight" />
-        <label>{label}</label>
+        <label htmlFor={id}>{label}</label>
       </div>
     </TextInputContainer>
   )

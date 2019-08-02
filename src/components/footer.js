@@ -174,12 +174,18 @@ function Footer() {
           <div className="col-12 col-lg-6 footer__right">
             <div className="footer__social-links">
               {socialLinks.map(link => (
-                <a key={link.key} href={link.link} target="_blank">
-                  <img src={link.label} />
+                <a
+                  key={link.key}
+                  href={link.link}
+                  target="_blank"
+                  aria-label={link.key}
+                  rel="noopener noreferrer"
+                >
+                  <img src={link.label} alt={link.key} />
                 </a>
               ))}
             </div>
-            <Note className='copy-rights'>
+            <Note className="copy-rights">
               © 2017 Uprise Services. All rights reserved.
             </Note>
           </div>

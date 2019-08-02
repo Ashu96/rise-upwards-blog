@@ -122,7 +122,7 @@ function Step({ title, stepNumber, description, imageSrc }) {
     <StepContainer className="row">
       <div className="col-12 col-lg-6">
         <StepImage>
-          <img src={imageSrc} />
+          <img src={imageSrc} alt={title} />
         </StepImage>
       </div>
       <div className="col-12 col-lg-6">

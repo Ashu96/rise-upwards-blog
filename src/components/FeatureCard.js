@@ -45,7 +45,7 @@ function FeatureCard({ title, imageSrc, description }) {
     <FeatureCardContainer>
       <Heading3>{title}</Heading3>
       <div className="image-container">
-        <img src={imageSrc} />
+        <img src={imageSrc} alt={title} />
       </div>
       <BodyText>{description}</BodyText>
     </FeatureCardContainer>

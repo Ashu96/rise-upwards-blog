@@ -69,7 +69,7 @@ function List({ images }) {
     <ListContainer>
       {images.map(image => (
         <ListItem key={image.id}>
-          <img src={image.url} />
+          <img src={image.url} alt='featured in'/>
         </ListItem>
       ))}
     </ListContainer>
