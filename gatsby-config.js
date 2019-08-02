@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `My Superblog`,
-    description: `Gatsby blog with Strapi as a headless CMS`,
+    title: `Rise upwards`,
+    description: `Making marketing website using gatsby and strapi`,
     author: `@gatsbyjs & @strapi`
   },
   plugins: [
@@ -19,7 +19,14 @@ module.exports = {
         apiURL: process.env.DEPLOY_URL
           ? 'https://rise-upwards.herokuapp.com'
           : 'http://localhost:1337',
-        contentTypes: [`article`, `user`],
+        contentTypes: [
+          `article`,
+          `user`,
+          `herosection`,
+          `feature`,
+          `step`,
+          `pride`
+        ],
         queryLimit: 1000
       }
     },
