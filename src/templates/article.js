@@ -14,8 +14,8 @@ const ArticleTemplate = ({ data }) => (
       </Link>
     </p>
     {/* <Img fluid={data.strapiArticle.image.childImageSharp.fluid} /> */}
-    <Img fluid={data.strapiArticle.image.url} />
-    <img src={data.strapiArticle.image.url} />
+    {/* <Img fluid={data.strapiArticle.image.url} /> */}
+    <img src={data.strapiArticle.image.publicURL} />
     <ReactMarkdown
       source={data.strapiArticle.content}
       // transformImageUri={uri =>
@@ -33,7 +33,7 @@ export const query = graphql`
       title
       content
       image {
-        url
+        publicURL
       }
       # image {
       #   childImageSharp {

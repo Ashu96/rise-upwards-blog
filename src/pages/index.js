@@ -1,59 +1,73 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import ReactMarkdown from 'react-markdown'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
+import HeroSection from '../components/heroSection'
+import TinySection from '../components/tinySection'
+import FeatureSection from '../components/featureSection'
+import AwardsSection from '../components/awardSection'
+import TourSection from '../components/tourSection'
+import ContactSection from '../components/contactSection'
+import SubscribeSection from '../components/subscribeSection'
 
-const IndexPage = ({ data }) => (
-  <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <ul>
-      {data.allStrapiArticle.edges.map(document => (
-        <li key={document.node.id}>
-          <h2>
-            <Link to={`/${document.node.id}`}>{document.node.title}</Link>
-          </h2>
-          {/* <Img fluid={document.node.image.childImageSharp.fluid} /> */}
-          <Img fluid={document.node.image.url} />
-          <img src={document.node.image.url} />
-          <ReactMarkdown
-            source={document.node.content}
-            // transformImageUri={uri =>
-            //   uri.startsWith('http')
-            //     ? uri
-            //     : `${process.env.IMAGE_BASE_URL}${uri}`
-            // }
-          />
-        </li>
-      ))}
-    </ul>
+function IndexPage({ data }) {
+  console.count('Render')
 
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  console.log({ main: data })
+  const { allStrapiPride } = data
+  const [isLoading, toggleLoading] = React.useState(true)
+  const [showCase, setShowCase] = React.useState({
+    awards: {},
+    featured: {},
+    partners: {}
+  })
+
+  React.useEffect(() => {
+    console.count('Effect')
+    let newShowCase = { ...showCase }
+    allStrapiPride.edges.forEach(edge => {
+      const { node } = edge
+      newShowCase[node.uuid] = node
+    })
+    setShowCase(newShowCase)
+    toggleLoading(false)
+  }, [allStrapiPride])
+
+  console.log({ showCase })
+
+  if (isLoading) {
+    return <p>Loading ...</p>
+  }
+
+  return (
+    <Layout>
+      <HeroSection />
+      <TinySection />
+      <FeatureSection />
+      <AwardsSection data={showCase.awards} />
+      <TourSection />
+      <AwardsSection data={showCase.partners} />
+      <AwardsSection data={showCase.featured} />
+      <ContactSection />
+      <SubscribeSection />
+      <div className="mgn-t-100" />
+    </Layout>
+  )
+}
 
 export default IndexPage
 
-export const pageQuery = graphql`
-  query IndexQuery {
-    allStrapiArticle {
+export const MainQuery = graphql`
+  {
+    allStrapiPride {
       edges {
         node {
-          id
-          image {
+          images {
             url
+            id
           }
-          # image {
-          #   childImageSharp {
-          #     fluid(maxWidth: 500) {
-          #       ...GatsbyImageSharpFluid
-          #     }
-          #   }
-          # }
           title
-          content
+          uuid
+          id
         }
       }
     }
