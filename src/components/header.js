@@ -47,9 +47,8 @@ const HeaderContainer = Styled.header`
 
 const Header = ({ siteTitle }) => (
   <HeaderContainer className="container-fluid nav-header">
-    <Helmet>
+    <Helmet  htmlAttributes={{ lang : 'en' }}>
       <meta charSet="utf-8" />
-      <meta lang="en-us" />
       <meta
         name="description"
         content="Uprise is a proactive and science-based Employee Assistance Program (EAP) 
