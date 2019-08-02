@@ -53,7 +53,7 @@ function HeroSection() {
         description
         subTitle
         image {
-          publicURL
+          url
         }
       }
     }
@@ -68,7 +68,7 @@ function HeroSection() {
     title,
     subTitle,
     description,
-    image: { publicURL: imageSrc }
+    image: { url: imageSrc }
   } = data.strapiHerosection
 
   return (

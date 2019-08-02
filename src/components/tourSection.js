@@ -33,7 +33,7 @@ function TourSection() {
             description
             stepNumber
             image {
-              publicURL
+              url
             }
           }
         }
@@ -66,7 +66,7 @@ function TourSection() {
                       title={node.title}
                       description={node.description}
                       stepNumber={node.stepNumber}
-                      imageSrc={node.image.publicURL}
+                      imageSrc={node.image.url}
                     />
                   )
                 })}

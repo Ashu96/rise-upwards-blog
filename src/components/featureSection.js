@@ -32,7 +32,7 @@ function FeatureSection() {
             id
             description
             image {
-              publicURL
+              url
             }
           }
         }
@@ -62,7 +62,7 @@ function FeatureSection() {
                       <FeatureCard
                         title={node.title}
                         description={node.description}
-                        imageSrc={node.image.publicURL}
+                        imageSrc={node.image.url}
                       />
                     </div>
                   )
