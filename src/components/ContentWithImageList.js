@@ -1,10 +1,17 @@
 import React from 'react'
 import Styled from 'styled-components'
+import { useStaticQuery, navigate, graphql } from 'gatsby'
+// import Img from 'gatsby-image'
 import { Heading2 } from '../styles/text'
+import { getPublicURL } from '../utils'
 
 const AwardContentContainer = Styled.div`
   margin-top: 120px;
   margin-bottom: 120px;
+
+  & h2 {
+    text-align: center;
+  }
 
   flex-direction: column;
   & button {
@@ -13,8 +20,31 @@ const AwardContentContainer = Styled.div`
   }
 `
 
-function AwardSection({ data }) {
-  const { title, images } = data
+function ContentWithImageList({ id }) {
+  const data = useStaticQuery(graphql`
+    {
+      allImageList: allStrapiImagelist {
+        edges {
+          node {
+            id
+            strapiId
+            title
+            images {
+              id
+              url
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const currentHeroSection = data.allImageList.edges.filter(
+    edge => edge.node.strapiId === id.trim()
+  )
+
+  const { node } = currentHeroSection[0]
+  const { title, images } = node
   return (
     <div
       className="container-fluid"
@@ -37,7 +67,7 @@ function AwardSection({ data }) {
   )
 }
 
-export default AwardSection
+export default ContentWithImageList
 
 const ListContainer = Styled.ul`
   list-style: none;
@@ -69,7 +99,10 @@ function List({ images }) {
     <ListContainer>
       {images.map(image => (
         <ListItem key={image.id}>
-          <img src={image.url} alt='featured in'/>
+          <img
+            src={getPublicURL(image.url || image.publicURL)}
+            alt="featured in"
+          />
         </ListItem>
       ))}
     </ListContainer>
@@ -77,11 +110,3 @@ function List({ images }) {
 }
 
 // export default List;
-
-function getPublicUrl(url) {
-  const baseURL = process.env.DEPLOY_URL
-    ? ''
-    : 'http://localhost:1337'
-
-  return `${baseURL}${url}`
-}

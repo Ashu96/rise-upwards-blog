@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import Img from 'gatsby-image'
 import { COLORS } from '../constants/styles'
 import { Heading3, BodyText } from '../styles/text'
 
@@ -40,14 +41,15 @@ const FeatureCardContainer = Styled.div`
   }
 `
 
-function FeatureCard({ title, imageSrc, description }) {
+function FeatureCard({ title, imageSrc, imageFixed, body }) {
   return (
     <FeatureCardContainer>
       <Heading3>{title}</Heading3>
       <div className="image-container">
-        <img src={imageSrc} alt={title} />
+        {imageSrc && <img src={imageSrc} alt={title} />}
+        {imageFixed && <Img fixed={imageFixed} alt={title} />}
       </div>
-      <BodyText>{description}</BodyText>
+      <BodyText>{body}</BodyText>
     </FeatureCardContainer>
   )
 }
@@ -57,5 +59,5 @@ export default FeatureCard
 FeatureCard.propTypes = {
   title: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  body: PropTypes.string.isRequired
 }

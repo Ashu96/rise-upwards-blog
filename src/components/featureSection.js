@@ -1,6 +1,5 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
 import { Heading2 } from '../styles/text'
 import FeatureCard from './FeatureCard'
 
@@ -22,29 +21,8 @@ const FeatureSectionContainer = Styled.div`
 
 `
 
-function FeatureSection() {
-  const data = useStaticQuery(graphql`
-    {
-      allStrapiFeature {
-        edges {
-          node {
-            title
-            id
-            description
-            image {
-              url
-            }
-          }
-        }
-      }
-    }
-  `)
-  if (!data) {
-    return null
-  }
-  const { allStrapiFeature } = data
-
-  return (
+function FeatureSection({ title, cards }) {
+    return (
     <div className="container-fluid">
       <div className="container">
         <div className="row">
@@ -55,14 +33,14 @@ function FeatureSection() {
                 <Heading2>Employee Assistance Program provider</Heading2>
               </div>
               <div className="row">
-                {allStrapiFeature.edges.map(edge => {
-                  const { node } = edge
+                {cards.map(card => {
                   return (
-                    <div key={node.id} className="col col-lg-4">
+                    <div key={card.id} className="col col-lg-4">
                       <FeatureCard
-                        title={node.title}
-                        description={node.description}
-                        imageSrc={node.image.url}
+                        title={card.title}
+                        body={card.body}
+                        imageSrc={card.image.publicURL}
+                        imageFixed={card.image.childImageSharp.fixed}
                       />
                     </div>
                   )
