@@ -20,7 +20,7 @@ const HeaderContainer = Styled.header`
 
   & ul {
     list-style: none;
-    display: flex;
+    display: none;
     margin: 0px;
     & li {
       margin: 0px;
@@ -30,24 +30,36 @@ const HeaderContainer = Styled.header`
         color: ${COLORS.textFaded};
         text-decoration: none;
         font-size: 16px;
+        cursor: pointer;
       }
     }
-  }
 
-  & .mobile--hide {
-    display: none !important;
-  }
+    @media (min-width: 768px) {
+      display: flex;
 
-  @media (min-width: 1220px) {
-    & .mobile--hide {
-      display: block;
     }
   }
+
+  & .cta {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    & button:first-child {
+      margin-right: 16px;
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+
+    }
+  }
+
 `
 
 const Header = ({ siteTitle }) => (
   <HeaderContainer className="container-fluid nav-header">
-    <Helmet  htmlAttributes={{ lang : 'en' }}>
+    <Helmet htmlAttributes={{ lang: 'en' }}>
       <meta charSet="utf-8" />
       <meta
         name="description"
@@ -66,7 +78,7 @@ provider in Australia."
               src={require('../images/upriselogo.svg')}
             />
           </Link>
-          <ul className="mobile--hide">
+          <ul className="">
             <li>
               <Link to="/">For Employers</Link>
             </li>
@@ -81,7 +93,7 @@ provider in Australia."
             </li>
           </ul>
         </div>
-        <div className="mobile--hide col-4 d-flex align-items-center justify-content-end">
+        <div className="mobile--hide col-4 cta">
           <LinkButton>Login</LinkButton>
           <OutLineButton>Book demo</OutLineButton>
         </div>
@@ -146,6 +158,10 @@ const MenuContainer = Styled.div`
         font-size: 18px;
       }
     }
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `
 
