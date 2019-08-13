@@ -1,13 +1,20 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from 'styled-components'
-import { Heading1, Heading2, Note, BodyText } from '../styles/text'
+import orderBy from 'lodash/orderBy'
+import Step from './step'
+import { Heading1 } from '../styles/text'
 
 const TourContentContainer = Styled.div`
   /* margin-top: 120px;
   margin-bottom: 120px; */
   margin: 60px 0px;
+
+  @media (min-width: 1200px) {
+    h1 {
+      padding: 0 25%;
+    }
+  }
 
   flex-direction: column;
   & button {
@@ -22,26 +29,53 @@ const TourContentContainer = Styled.div`
   }
 `
 
-function TourSection() {
+function TourSection({ id }) {
+
   const data = useStaticQuery(graphql`
     {
-      allStrapiStep(sort: { order: ASC, fields: stepNumber }) {
+      allStepSections: allStrapiStepsection {
         edges {
           node {
             id
+            showCurve
+            strapiId
             title
-            description
-            stepNumber
-            image {
-              url
+            steps {
+              id
+              order
+              showStepNumber
+              title
+              body
+              image {
+                childImageSharp {
+                  fluid(maxWidth: 485) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
           }
         }
       }
     }
   `)
-  const { allStrapiStep } = data
 
+  if (!data) {
+    return null
+  }
+
+  const { allStepSections } = data
+
+  const currentData = allStepSections.edges.filter(
+    edge => edge.node.strapiId === id.trim()
+  )
+
+  const { node } = currentData && currentData.length && currentData[0]
+  if (!node) {
+    return null
+  }
+
+  const { title, steps } = node
   return (
     <div
       className="container-fluid"
@@ -54,19 +88,18 @@ function TourSection() {
         <div className="row">
           <div className="col">
             <TourContentContainer className="d-flex justify-content-center align-items-center">
-              <Heading1>Our solution is based</Heading1>
-              <Heading1>on a new preventative technology called</Heading1>
-              <Heading1>Stepped Care</Heading1>
+              <Heading1 textCenter>{title}</Heading1>
               <div className="steps">
-                {allStrapiStep.edges.map(edge => {
-                  const { node } = edge
+                {orderBy(steps, ['order'], ['asc']).map(step => {
                   return (
                     <Step
-                      key={node.id}
-                      title={node.title}
-                      description={node.description}
-                      stepNumber={node.stepNumber}
-                      imageSrc={node.image.url}
+                      key={step.id}
+                      title={step.title}
+                      body={step.body}
+                      stepNumber={step.order}
+                      showStepNumber={step.showStepNumber}
+                      imageSrc={step.image.publicURL}
+                      image={step.image.childImageSharp.fluid}
                     />
                   )
                 })}
@@ -80,67 +113,3 @@ function TourSection() {
 }
 
 export default TourSection
-
-const StepContainer = Styled.div`
-  display: flex;
-  margin-bottom: 70px;
-  /* margin-bottom: 140px; */
-
-`
-
-const StepImage = Styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  
-  & img {
-    width: 100%;
-    height: auto;
-    max-height: 395px;
-
-    @media (min-width: 768px) {
-      width: 70%;
-    }
-  }
-`
-
-const StepInfo = Styled.div`
-  margin-top: 16px;
-
-  & p {
-    margin-bottom: 10px;
-  }
-
-  & h2 {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-`
-
-function Step({ title, stepNumber, description, imageSrc }) {
-  return (
-    <StepContainer className="row">
-      <div className="col-12 col-lg-6">
-        <StepImage>
-          <img src={imageSrc} alt={title} />
-        </StepImage>
-      </div>
-      <div className="col-12 col-lg-6">
-        <StepInfo>
-          <Note>{`STEP ${stepNumber}`}</Note>
-          <Heading2>{title}</Heading2>
-          <BodyText>{description}</BodyText>
-        </StepInfo>
-      </div>
-    </StepContainer>
-  )
-}
-
-// export default Steps;
-
-Step.propType = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
-  stepNumber: PropTypes.number.isRequired
-}
