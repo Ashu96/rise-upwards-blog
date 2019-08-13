@@ -20,12 +20,19 @@ module.exports = {
           ? 'https://rise-upwards.herokuapp.com'
           : 'http://localhost:1337',
         contentTypes: [
-          `article`,
-          `user`,
+          `blog`,
           `herosection`,
-          `feature`,
+          `page`,
+          `report`,
+          `reportsection`,
+          `sectionwithcontentincenter`,
+          `sectionwithcontentandimage`,
           `step`,
-          `pride`
+          `stepsection`,
+          `imagelist`,
+          `contentwithcard`,
+          `cards`,
+          `section`
         ],
         queryLimit: 1000
       }
