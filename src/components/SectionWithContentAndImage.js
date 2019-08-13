@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import {navigate} from 'gatsby'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
 import { PrimaryButton } from '../styles/buttons'
@@ -70,7 +71,7 @@ function SectionWithContentAndImage({
               <Heading2 className="mgn-b-20">{title}</Heading2>
               <BodyText>{body}</BodyText>
               {action && (
-                <PrimaryButton className="mgn-t-50" onClick={action.action}>
+                <PrimaryButton className="mgn-t-50" onClick={() => navigate(action.link)}>
                   {action.label}
                   <Icon fill={COLORS.justWhite} />
                 </PrimaryButton>
@@ -88,7 +89,7 @@ SectionWithContentAndImage.propTypes = {
   body: PropTypes.string,
   action: PropTypes.shape({
     label: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired
+    link: PropTypes.string.isRequired
   }),
   bgPrimary: PropTypes.bool,
   imageSrc: PropTypes.string.isRequired
