@@ -1,13 +1,40 @@
 import { useStaticQuery, navigate, graphql } from 'gatsby'
 import React from 'react'
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import Img from 'gatsby-image'
 import { OutLineButton, PrimaryButton } from '../styles/buttons'
 import { Heading1, Heading4, BodyText } from '../styles/text'
 
 const HeroContentContainer = Styled.div`
-  text-align: center;
-  margin-top: 47px;
+  text-align: ${props => (props.splitScreen ? 'left' : 'center')};
+  padding-top: 100px;
+  padding-bottom: 115px;
+
+  & .hero__heading {
+    display: flex;
+    flex-direction: ${props => (props.splitScreen ? 'row' : 'column')}
+    flex-wrap: wrap;
+  }
+
+  & .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: ${props => (props.splitScreen ? 'start' : 'center')};;
+    flex: 0 0 100%;
+    max-width: 100%;
+    
+    & p {
+      @media (min-width: 768px) {
+        padding: ${props => props.splitScreen ? '0px 25% 0px 0px' : '0px 20%'};
+      }
+    }
+
+    @media (min-width: 768px) {
+      flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
+      max-width: ${props => (props.splitScreen ? '50%' : '100%')};
+    }
+  }
+
 
   & .hero__cta-container {
     margin-top: 40px;
@@ -16,7 +43,8 @@ const HeroContentContainer = Styled.div`
     align-items: center;
 
     & button {
-      width: 75%;
+      width: 100%;
+
       &:first-child {
         margin-bottom: 16px; 
       }
@@ -38,64 +66,111 @@ const HeroContentContainer = Styled.div`
   & .hero__image-container {
     margin-top: 50px;
     margin-bottom: 20px;
+    & > div {
+      /* min-height: 300px; */
+    }
     img {
       max-width: 100%;
+      /* min-height: 300px; */
+    }
+    width: 100%;
+    @media (min-width: 768px) {
+      flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
+      max-width: ${props => (props.splitScreen ? '50%' : '100%')};
     }
   }
 `
 
-function HeroSection() {
+function HeroSection({ id }) {
   const data = useStaticQuery(graphql`
     {
-      strapiHerosection {
-        id
-        title
-        description
-        subTitle
-        image {
-          url
+      allHeroSection: allStrapiHerosection {
+        edges {
+          node {
+            id
+            strapiId
+            title
+            subTitle
+            body
+            splitScreen
+            action {
+              primary {
+                label
+                link
+              }
+              secondary {
+                label
+                link
+              }
+            }
+            image {
+              childImageSharp {
+                fluid(maxWidth: 1160, maxHeight: 500) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       }
     }
   `)
-  console.log({ Hero: data })
 
   if (!data) {
     return null
   }
 
-  const {
-    title,
-    subTitle,
-    description,
-    image: { url: imageSrc }
-  } = data.strapiHerosection
+  const currentHeroSection = data.allHeroSection.edges.filter(
+    edge => edge.node.strapiId === id.trim()
+  )
+
+  const { node } =
+    currentHeroSection && currentHeroSection.length && currentHeroSection[0]
+  if (!node) {
+    return null
+  }
+  const { title, subTitle, body, image, imageSrc, action, splitScreen } = node
 
   return (
-    <div className="container-fluid">
+    <HeroContentContainer className="container-fluid" splitScreen={splitScreen}>
       <div className="container">
         <div className="row">
           <div className="col">
-            <HeroContentContainer className="hero__heading">
-              <Heading1 className="text--semi-bold mgn-b-10">{title}</Heading1>
-              <Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
-              <BodyText>{description}</BodyText>
-              <div className="hero__cta-container">
-                <PrimaryButton onClick={() => navigate('/help')}>
-                  Book a demo
-                </PrimaryButton>
-                <OutLineButton onClick={() => navigate('/help')}>
-                  Watch a minute video
-                </OutLineButton>
+            <div className="hero__heading" s>
+              <div className="hero__content">
+                <Heading1 className="text--semi-bold mgn-b-10">
+                  {title}
+                </Heading1>
+                <Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
+                <BodyText>{body}</BodyText>
+                <div className="hero__cta-container">
+                  {action.primary && (
+                    <PrimaryButton
+                      onClick={() => navigate(action.primary.link)}
+                    >
+                      {action.primary.label}
+                    </PrimaryButton>
+                  )}
+                  {action.secondary && (
+                    <OutLineButton
+                      onClick={() => navigate(action.secondary.link)}
+                    >
+                      {action.secondary.label}
+                    </OutLineButton>
+                  )}
+                </div>
               </div>
               <div className="hero__image-container">
-                <img alt="hero" src={imageSrc} />
+                {imageSrc && <img alt="hero" src={imageSrc} />}
+                {image && (
+                  <Img fluid={image.childImageSharp.fluid} alt={'hero'} />
+                )}
               </div>
-            </HeroContentContainer>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </HeroContentContainer>
   )
 }
 
