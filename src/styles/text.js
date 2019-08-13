@@ -1,7 +1,7 @@
 import Styled from 'styled-components'
 import { COLORS } from '../constants/styles'
 
-export const Heading1 = Styled.h2`
+export const Heading1 = Styled.h1`
   font-family: 'proxima_nova_ltsemibold';
   font-size: 42px;
   font-weight: 600;
@@ -9,7 +9,7 @@ export const Heading1 = Styled.h2`
   font-stretch: normal;
   line-height: 1.25;
   letter-spacing: normal;
-  text-align: center;
+  text-align: ${props => props.textCenter ? 'center' : 'inherit'};
   color: ${COLORS.textDarker};
 `
 
@@ -21,7 +21,7 @@ export const Heading2 = Styled.h2`
   font-stretch: normal;
   line-height: 1.25;
   letter-spacing: normal;
-  text-align: center;
+  text-align: ${props => props.textCenter ? 'center' : 'inherit'};
   color: ${COLORS.textDarker};
 `
 
@@ -33,7 +33,7 @@ export const Heading3 = Styled.h3`
   font-stretch: normal;
   line-height: 1.25;
   letter-spacing: normal;
-  text-align: center;
+  text-align: ${props => props.textCenter ? 'center' : 'inherit'};
   color: ${COLORS.textDarker};
 `
 
@@ -68,4 +68,14 @@ export const Note = Styled.p`
   line-height: 1.5;
   letter-spacing: normal;
   color: ${props => (props.color ? props.color : COLORS.grey)};
+`
+export const Label = Styled.p`
+  font-family: 'Proxima Nova';
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.7;
+  letter-spacing: normal;
+  color: ${props => (props.color ? props.color : COLORS.textFaded)};
 `

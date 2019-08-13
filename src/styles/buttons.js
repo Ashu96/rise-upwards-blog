@@ -2,10 +2,13 @@ import Styled from 'styled-components'
 import { COLORS } from '../constants/styles'
 
 const Button = Styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: none;
   border: none;
   margin: 0px;
-  height: 40px;
+  height: 50px;
   padding: 11px 16px;
   color: ${COLORS.uprisePurple};
   cursor: pointer;
@@ -19,6 +22,7 @@ export const OutLineButton = Styled(Button)`
     props.secondary ? COLORS.spaceBlue : COLORS.uprisePurple};
 `
 export const LinkButton = Styled(Button)`
+  font-size: 16px;
   color: ${COLORS.uprisePurple};
 `
 export const PrimaryButton = Styled(Button)`
