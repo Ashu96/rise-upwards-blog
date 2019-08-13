@@ -4,11 +4,11 @@ import Styled from 'styled-components'
 import Report from './Report'
 import { Heading2 } from '../styles/text'
 import { Container, Row, Col } from '../styles/grid'
-import { COLORS } from '../constants/styles'
+import { backgrounds } from 'uprise-uikit/colors/colors'
 
 const ReportSectionContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? COLORS.fadeBackground : COLORS.justWhite};
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
   padding-top: 60px;
   padding-bottom: 60px;
 

@@ -6,13 +6,14 @@ import Img from 'gatsby-image'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
 import { LinkButton } from '../styles/buttons'
-import { COLORS } from '../constants/styles'
+import { backgrounds } from 'uprise-uikit/colors/colors'
+
 import Icon from './Icon'
 import { extractQueryData } from '../utils'
 
 const SingleMediaWithParagraphAndLinkContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? COLORS.fadeBackground : COLORS.justWhite};
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
   & .row {
     flex-direction: ${props => (props.imageFirst ? 'row' : 'row-reverse')};
@@ -54,7 +55,6 @@ const SingleMediaWithParagraphAndLinkContainer = Styled.div`
 `
 
 function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
-
   const data = useStaticQuery(graphql`
     {
       allStrapiSectionwithcontentandimage {
@@ -117,7 +117,7 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
                   onClick={() => navigate(action.primary.link)}
                 >
                   {action.primary.label}
-                  <Icon fill={COLORS.uprisePurple} />
+                  <Icon fill={backgrounds.fadedPurple} />
                 </LinkButton>
               )}
             </div>

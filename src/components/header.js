@@ -3,11 +3,12 @@ import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import { backgrounds, primary, extended } from 'uprise-uikit/colors/colors'
+
 import { OutLineButton, LinkButton } from '../styles/buttons'
 
 const HeaderContainer = Styled.header`
-  background-color: ${COLORS.fadeBackground};
+  background-color: ${backgrounds.fadedPurple};
   min-height: 70px;
 
   & .row {
@@ -27,7 +28,7 @@ const HeaderContainer = Styled.header`
       margin-right: 49px;
 
       & a {
-        color: ${COLORS.textFaded};
+        color: ${extended.charcoal.three};
         text-decoration: none;
         font-size: 16px;
         cursor: pointer;
@@ -134,8 +135,8 @@ const MenuContainer = Styled.div`
   & .menu__container {
     position: fixed;
     z-index: 20;
-    background-color: ${COLORS.uprisePurple};
-    color: ${COLORS.justWhite};
+    background-color: ${primary.purple};
+    color: ${backgrounds.white};
     width: 100%;
     height: 100vh;
     top: 70px;
@@ -153,7 +154,7 @@ const MenuContainer = Styled.div`
       margin-top: 49px;
 
       & a {
-        color: ${COLORS.justWhite};
+        color: ${backgrounds.white};
         text-decoration: none;
         font-size: 18px;
       }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import { primary, extended } from 'uprise-uikit/colors/colors'
 
 const TextInputContainer = Styled.div`
 /****  floating-Lable style start ****/
@@ -18,17 +18,17 @@ const TextInputContainer = Styled.div`
   height: 42px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid ${COLORS.greyLabel};
+  border-bottom: 1px solid ${extended.charcoal.three};
 }
 
 .floating-input:focus,
 .floating-select:focus {
   outline: none;
-  border-bottom: 2px solid ${COLORS.uprisePurple};
+  border-bottom: 2px solid ${primary.purple};
 }
 
 label {
-  color: ${COLORS.greyLabel};
+  color: ${extended.charcoal.three};
   font-size: 14px;
   font-weight: normal;
   position: absolute;
@@ -43,14 +43,14 @@ label {
 .floating-input:focus ~ label {
   top: -14px;
   font-size: 12px;
-  color: ${COLORS.uprisePurple};
+  color: ${primary.purple};
 }
 
 .floating-select:focus ~ label,
 .floating-select:not([value='']):valid ~ label {
   top: -14px;
   font-size: 12px;
-  color: ${COLORS.uprisePurple};
+  color: ${primary.purple};
 }
 
 /* active state */
@@ -98,7 +98,7 @@ label {
 /* animation */
 @-webkit-keyframes inputHighlighter {
   from {
-    background: ${COLORS.uprisePurple};
+    background: ${primary.purple};
   }
   to {
     width: 0;
@@ -107,7 +107,7 @@ label {
 }
 @-moz-keyframes inputHighlighter {
   from {
-    background: ${COLORS.uprisePurple};
+    background: ${primary.purple};
   }
   to {
     width: 0;
@@ -116,7 +116,7 @@ label {
 }
 @keyframes inputHighlighter {
   from {
-    background: ${COLORS.uprisePurple};
+    background: ${primary.purple};
   }
   to {
     width: 0;

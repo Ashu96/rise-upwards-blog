@@ -1,10 +1,11 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import { backgrounds } from 'uprise-uikit/colors/colors'
+
 import { PrimaryButton } from '../styles/buttons'
 
 const TinyContainer = Styled.div`
-  background-color: ${COLORS.fadeBackground};
+  background-color: ${backgrounds.fadedPurple};
 
   & .content {
     display: flex;

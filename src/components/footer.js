@@ -1,11 +1,16 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import {
+  primary,
+  backgrounds,
+  extended
+} from 'uprise-uikit/colors/colors'
+
 import { Note } from '../styles/text'
 
 const FooterContainer = Styled.footer`
-  background-color: ${COLORS.fadeBackground};
+  background-color: ${backgrounds.fadedPurple};
   padding: 80px 0px;
 
   & .footer__right {
@@ -25,7 +30,7 @@ const FooterContainer = Styled.footer`
     margin: 0px;
     list-style: none;
     padding: 0px;
-    color: ${COLORS.uprisePurple};
+    color: ${primary.purple};
 
     & li {
       margin-bottom: 8px;
@@ -137,7 +142,7 @@ function Footer() {
                 <ul className="footer__links">
                   {footerMenu.map(item => (
                     <li key={item.key}>
-                      <Note color={COLORS.uprisePurple}>
+                      <Note color={primary.purple}>
                         <Link to={item.link}>{item.label.toUpperCase()}</Link>
                       </Note>
                     </li>
@@ -147,7 +152,7 @@ function Footer() {
               <div className="col-6 footer__company-info">
                 <ul className="footer__address">
                   <li>
-                    <Note color={COLORS.textFaded}>Uprise</Note>
+                    <Note color={extended.charcoal.three}>Uprise</Note>
                   </li>
                   <li>
                     <Note style={{ fontWeight: 'normal' }}>

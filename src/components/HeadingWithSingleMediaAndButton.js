@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { navigate, useStaticQuery } from 'gatsby'
+import { backgrounds } from 'uprise-uikit/colors/colors'
+
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
 import { PrimaryButton } from '../styles/buttons'
-import { COLORS } from '../constants/styles'
 import Icon from './Icon'
 
 const HeadingWithSingleMediaAndButtonContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? COLORS.fadeBackground : COLORS.justWhite};
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
   & .content > div {
     margin-top: 80px;
@@ -107,7 +108,7 @@ function HeadingWithSingleMediaAndButton({ id, bgPrimary }) {
                   onClick={() => navigate(action.primary.link)}
                 >
                   {action.primary.label}
-                  <Icon fill={COLORS.justWhite} />
+                  <Icon fill={backgrounds.white} />
                 </PrimaryButton>
               )}
             </div>

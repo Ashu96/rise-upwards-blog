@@ -1,12 +1,13 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import { backgrounds } from 'uprise-uikit/colors/colors'
+
 import { PrimaryButton } from '../styles/buttons'
 import { Heading2, BodyText } from '../styles/text'
 import { TextInput } from '../styles/inputs'
 
 const ContactContentContainer = Styled.div`
-  background-color: ${COLORS.fadeBackground};
+  background-color: ${backgrounds.fadedPurple};
   padding-top: 80px;
   padding-bottom: 120px;
   & .contact__header {
@@ -29,7 +30,7 @@ const ContactContentContainer = Styled.div`
     max-width: 570px;
     border-radius: 10px;
     box-shadow: 0 2px 4px 0 rgba(219, 221, 227, 0.5);
-    background-color: #ffffff;
+    background-color: ${backgrounds.white};
 
     padding: 16px;
   }

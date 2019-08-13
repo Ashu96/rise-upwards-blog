@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import {navigate} from 'gatsby'
+import { navigate } from 'gatsby'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
 import { PrimaryButton } from '../styles/buttons'
-import { COLORS } from '../constants/styles'
+import { backgrounds } from 'uprise-uikit/colors/colors'
+
 import Icon from './Icon'
 
 const SectionWithContentInCenterContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? COLORS.fadeBackground : COLORS.justWhite};
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
   & .content {
     display: flex;
@@ -38,9 +39,12 @@ function SectionWithContentInCenter({ title, body, action, bgPrimary }) {
               <Heading2 className="mgn-b-20">{title}</Heading2>
               <BodyText>{body}</BodyText>
               {action && (
-                <PrimaryButton className="mgn-t-50" onClick={() => navigate(action.link)}>
+                <PrimaryButton
+                  className="mgn-t-50"
+                  onClick={() => navigate(action.link)}
+                >
                   {action.label}
-                  <Icon fill={COLORS.justWhite} />
+                  <Icon fill={backgrounds.white} />
                 </PrimaryButton>
               )}
             </div>

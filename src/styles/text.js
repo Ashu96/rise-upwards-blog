@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import { COLORS } from '../constants/styles'
+import { primary, extended } from 'uprise-uikit/colors/colors'
 
 export const Heading1 = Styled.h1`
   font-family: 'proxima_nova_ltsemibold';
@@ -9,8 +9,8 @@ export const Heading1 = Styled.h1`
   font-stretch: normal;
   line-height: 1.25;
   letter-spacing: normal;
-  text-align: ${props => props.textCenter ? 'center' : 'inherit'};
-  color: ${COLORS.textDarker};
+  text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+  color: ${primary.charcoal};
 `
 
 export const Heading2 = Styled.h2`
@@ -21,8 +21,8 @@ export const Heading2 = Styled.h2`
   font-stretch: normal;
   line-height: 1.25;
   letter-spacing: normal;
-  text-align: ${props => props.textCenter ? 'center' : 'inherit'};
-  color: ${COLORS.textDarker};
+  text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+  color: ${primary.charcoal};
 `
 
 export const Heading3 = Styled.h3`
@@ -33,8 +33,8 @@ export const Heading3 = Styled.h3`
   font-stretch: normal;
   line-height: 1.25;
   letter-spacing: normal;
-  text-align: ${props => props.textCenter ? 'center' : 'inherit'};
-  color: ${COLORS.textDarker};
+  text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+  color: ${primary.charcoal};
 `
 
 export const Heading4 = Styled.h4`
@@ -45,7 +45,7 @@ export const Heading4 = Styled.h4`
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
-  color: ${COLORS.textDarker};
+  color: ${primary.charcoal};
 `
 
 export const BodyText = Styled.p`
@@ -56,7 +56,7 @@ export const BodyText = Styled.p`
   font-stretch: normal;
   line-height: 1.56;
   letter-spacing: normal;
-  color: ${COLORS.textFaded};
+  color: ${extended.charcoal.one};
 `
 
 export const Note = Styled.p`
@@ -67,7 +67,7 @@ export const Note = Styled.p`
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
-  color: ${props => (props.color ? props.color : COLORS.grey)};
+  color: ${props => (props.color ? props.color : extended.charcoal.three)};
 `
 export const Label = Styled.p`
   font-family: 'Proxima Nova';
@@ -77,5 +77,5 @@ export const Label = Styled.p`
   font-stretch: normal;
   line-height: 1.7;
   letter-spacing: normal;
-  color: ${props => (props.color ? props.color : COLORS.textFaded)};
+  color: ${props => (props.color ? props.color : extended.charcoal.one)};
 `

@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
-import { COLORS } from '../constants/styles'
+import { backgrounds } from 'uprise-uikit/colors/colors'
+
 import { Heading3, BodyText } from '../styles/text'
 
 const FeatureCardContainer = Styled.div`
   /* width: 370px; */
   width: auto;
   min-height: 561px;
-  background-color: ${COLORS.fadeBackground};
+  background-color: ${backgrounds.fadedPurple};
   padding: 40px;
   text-align: center;
 

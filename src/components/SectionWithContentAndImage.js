@@ -5,12 +5,15 @@ import {navigate} from 'gatsby'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
 import { PrimaryButton } from '../styles/buttons'
-import { COLORS } from '../constants/styles'
+import {
+  backgrounds,
+} from 'uprise-uikit/colors/colors'
+ 
 import Icon from './Icon'
 
 const SectionWithContentAndImageContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? COLORS.fadeBackground : COLORS.justWhite};
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
   & .content {
     display: flex;
@@ -73,7 +76,7 @@ function SectionWithContentAndImage({
               {action && (
                 <PrimaryButton className="mgn-t-50" onClick={() => navigate(action.link)}>
                   {action.label}
-                  <Icon fill={COLORS.justWhite} />
+                  <Icon fill={backgrounds.fadedPurple.justWhite} />
                 </PrimaryButton>
               )}
             </div>
