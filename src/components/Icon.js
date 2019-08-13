@@ -22,7 +22,7 @@ Icon.propTypes = {
   fill: PropTypes.string
 }
 
-Icon.propTypes = {
+Icon.defaultProps = {
   width: '24px',
   fill: '#000'
 }
