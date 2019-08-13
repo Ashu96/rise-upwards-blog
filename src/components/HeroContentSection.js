@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { navigate } from 'gatsby'
+import Img from 'gatsby-image'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading1, Heading4, BodyText } from '../styles/text'
 import { PrimaryButton, OutLineButton } from '../styles/buttons'
@@ -45,7 +46,7 @@ const HeroContentContainer = Styled.div`
   }
 `
 
-function HeroContent({ title, subTitle, description, actions, imageSrc }) {
+function HeroContent({ title, subTitle, body, actions, image, imageSrc }) {
   return (
     <HeroContentContainer className="container-fluid">
       <Container>
@@ -54,19 +55,24 @@ function HeroContent({ title, subTitle, description, actions, imageSrc }) {
             <div className="hero__heading">
               <Heading1 className="mgn-b-10">{title}</Heading1>
               <Heading4 className="mgn-b-20">{subTitle}</Heading4>
-              <BodyText>{description}</BodyText>
+              <BodyText>{body}</BodyText>
               <div className="hero__cta-container">
-                <PrimaryButton onClick={actions.primary.action}>
-                  {actions.primary.label}
-                </PrimaryButton>
+                {actions.primary && (
+                  <PrimaryButton onClick={() => navigate(actions.primary.link)}>
+                    {actions.primary.label}
+                  </PrimaryButton>
+                )}
                 {actions.secondary && (
-                  <OutLineButton onClick={actions.primary.action}>
+                  <OutLineButton
+                    onClick={() => navigate(actions.secondary.link)}
+                  >
                     {actions.secondary.label}
                   </OutLineButton>
                 )}
               </div>
               <div className="hero__image-container">
-                <img alt="hero" src={imageSrc} />
+                {imageSrc && <img alt="hero" src={imageSrc} />}
+                {image && <Img alt="hero" fluid={image} />}
               </div>
             </div>
           </Col>
@@ -79,25 +85,26 @@ function HeroContent({ title, subTitle, description, actions, imageSrc }) {
 HeroContent.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
-  description: PropTypes.string,
+  body: PropTypes.string,
   actions: PropTypes.shape({
     primary: PropTypes.shape({
       label: PropTypes.string.isRequired,
-      action: PropTypes.func.isRequired
+      link: PropTypes.string.isRequired
     }).isRequired,
     secondary: PropTypes.shape({
       label: PropTypes.string.isRequired,
-      action: PropTypes.func.isRequired
+      link: PropTypes.string.isRequired
     })
   }),
-  imageSrc: PropTypes.string.isRequired
+  image: PropTypes.object,
+  imageSrc: PropTypes.string
 }
 
 HeroContent.defaultProps = {
   actions: {
     primary: {
       label: 'Book a demo',
-      action: () => navigate('/')
+      link: () => navigate('/')
     }
   }
 }
