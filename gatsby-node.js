@@ -64,27 +64,6 @@ exports.createPages = ({ actions, graphql }) => {
             id
             slug
             template
-            herosection {
-              id
-            }
-            imagelists {
-              id
-            }
-            reportsections {
-              id
-            }
-            sectionwithcontentandimage {
-              id
-            }
-            sectionwithcontentincenters {
-              id
-            }
-            stepsections {
-              id
-            }
-            contentwithcards {
-              id
-            }
           }
         }
       }
@@ -97,22 +76,7 @@ exports.createPages = ({ actions, graphql }) => {
         path: `/${node.slug}`,
         component: path.resolve(`src/templates/${node.template}.js`),
         context: {
-          id: node.id,
-          heroSectionId: node.herosection && node.herosection.id,
-          imageListSectionId: node.imagelists && node.imagelists.id,
-          reportSectionsId: node.reportsections && node.reportsections.id,
-          sectionWithContentAndImageId:
-            node.sectionwithcontentandimage &&
-            node.sectionwithcontentandimage.id,
-          sectionWithContentInCenterId:
-            node.sectionwithcontentincenters &&
-            node.sectionwithcontentincenters.id,
-          stepSectionId:
-            node.stepsections && node.stepsections.length && node.stepsections[0].id,
-          contentWithCardId:
-            node.contentwithcards &&
-            node.contentwithcards.length &&
-            node.contentwithcards[0].id
+          id: node.id
         }
       })
     })
