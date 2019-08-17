@@ -14,7 +14,7 @@ const HeadingWithSingleMediaAndButtonContainer = Styled.div`
   background-color: ${props =>
     props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
-  & .content > div {
+  & .content > .with-margin {
     margin-top: 80px;
     width: 100%;
     height: 200px;
@@ -39,6 +39,10 @@ const HeadingWithSingleMediaAndButtonContainer = Styled.div`
     & h2 {
       padding: 0 20%;
       text-align: center;
+    }
+
+    & .with-padding {
+      padding: 0px 15%;
     }
   }
 `
@@ -85,7 +89,7 @@ function HeadingWithSingleMediaAndButton({ id, bgPrimary }) {
     return null
   }
 
-  const { title, image, action } = node
+  const { title, body, image, action } = node
   return (
     <HeadingWithSingleMediaAndButtonContainer
       className="container-fluid"
@@ -97,11 +101,11 @@ function HeadingWithSingleMediaAndButton({ id, bgPrimary }) {
             <div className="content">
               <Heading2 className="mgn-b-20">{title}</Heading2>
               {image && (
-                <div>
-                  <Img fixed={image.childImageSharp.fluid} />
+                <div className='with-margin'>
+                  <Img fluid={image.childImageSharp.fluid} />
                 </div>
               )}
-
+              {body && <BodyText className="with-padding">{body}</BodyText>}
               {action && action.primary && (
                 <PrimaryButton
                   className="mgn-t-50"
