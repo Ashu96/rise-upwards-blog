@@ -1,10 +1,13 @@
 import React from 'react'
 import SECTION_TYPES from '../constants/sectionTypes'
+import BUTTON_TYPES from '../constants/buttonTypes'
+import {PrimaryButton, LinkButton, OutLineButton} from '../styles/buttons'
 import HeroSection from '../components/heroSection'
 import ContentWithImageList from '../components/ContentWithImageList'
 import TourSection from '../components/tourSection'
 import HeadingWithSingleMediaAndButton from '../components/HeadingWithSingleMediaAndButton'
 import SingleMediaWithParagraphAndLink from '../components/SingleMediaWithParagraphAndLink'
+import Reports from '../components/Reports'
 
 export function getComponent(type) {
   switch (type) {
@@ -19,8 +22,19 @@ export function getComponent(type) {
       return HeadingWithSingleMediaAndButton
     case SECTION_TYPES.SINGLE_MEDIA_WITH_PARAGRAPH_AND_LINK:
       return SingleMediaWithParagraphAndLink
+    case SECTION_TYPES.REPORTS:
+      return Reports
     default:
       return () => <h1>No component found</h1>
+  }
+}
+
+export function getButton(type) {
+  switch(type) {
+    case BUTTON_TYPES.LINK: return LinkButton
+    case BUTTON_TYPES.PRIMARY: return PrimaryButton
+    case BUTTON_TYPES.OUTLINE: return OutLineButton
+    default: return (props) => <PrimaryButton {...props} secondary />
   }
 }
 

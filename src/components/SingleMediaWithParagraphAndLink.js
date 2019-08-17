@@ -5,11 +5,9 @@ import { navigate, graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
-import { LinkButton } from '../styles/buttons'
 import { backgrounds } from 'uprise-uikit/colors/colors'
-
 import Icon from './Icon'
-import { extractQueryData } from '../utils'
+import { extractQueryData, getButton } from '../utils'
 
 const SingleMediaWithParagraphAndLinkContainer = Styled.div`
   background-color: ${props =>
@@ -67,7 +65,7 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
             imageFirst
             image {
               childImageSharp {
-                fluid(maxWidth: 485) {
+                fluid(maxWidth: 285) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -78,6 +76,7 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
                 link
               }
             }
+            buttonType
           }
         }
       }
@@ -93,7 +92,10 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
     return null
   }
 
-  const { title, body, action, image, imageFirst } = node
+  const { title, body, action, image, imageFirst, buttonType } = node
+
+  const Button = getButton(buttonType)
+
   return (
     <SingleMediaWithParagraphAndLinkContainer
       className="container-fluid"
@@ -112,13 +114,13 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
               <Heading2 className="mgn-b-20">{title}</Heading2>
               <BodyText>{body}</BodyText>
               {action && action.primary && (
-                <LinkButton
+                <Button
                   className="mgn-t-50"
                   onClick={() => navigate(action.primary.link)}
                 >
                   {action.primary.label}
                   <Icon fill={backgrounds.fadedPurple} />
-                </LinkButton>
+                </Button>
               )}
             </div>
           </Col>
