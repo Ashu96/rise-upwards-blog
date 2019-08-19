@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { backgrounds } from 'uprise-uikit/colors/colors'
-
+import {getPublicURL} from '../utils'
 import { Heading3, BodyText } from '../styles/text'
 
 const FeatureCardContainer = Styled.div`
   /* width: 370px; */
   width: auto;
-  min-height: 561px;
+  height: 590px;
   background-color: ${backgrounds.fadedPurple};
   padding: 40px;
   text-align: center;
@@ -18,7 +18,6 @@ const FeatureCardContainer = Styled.div`
 
   & .image-container {
     margin: 40px 0px;
-
     & img {
       height: 171px;
     }
@@ -33,22 +32,22 @@ const FeatureCardContainer = Styled.div`
 
   @media (min-width: 768px) {
     min-width: 300px;
-    min-height: 620px;
+    height: 620px;
   }
 
   @media (min-width: 1220px) {
     width: 345px;
-    min-height: 590px;
+    height: 590px;
   }
 `
 
-function FeatureCard({ title, imageSrc, imageFixed, body }) {
+function FeatureCard({ title, imageSrc, imageFluid, body }) {
   return (
     <FeatureCardContainer>
       <Heading3>{title}</Heading3>
       <div className="image-container">
-        {imageSrc && <img src={imageSrc} alt={title} />}
-        {imageFixed && <Img fixed={imageFixed} alt={title} />}
+        {imageSrc && <img src={getPublicURL(imageSrc)} alt={title} />}
+        {imageFluid && <Img fluid={imageFluid} alt={title} />}
       </div>
       <BodyText>{body}</BodyText>
     </FeatureCardContainer>
@@ -59,6 +58,7 @@ export default FeatureCard
 
 FeatureCard.propTypes = {
   title: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string,
+  imageFluid: PropTypes.object,
   body: PropTypes.string.isRequired
 }
