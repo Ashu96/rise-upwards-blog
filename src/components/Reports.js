@@ -17,9 +17,9 @@ function Reports({ id, bgPrimary }) {
               body
               label
               id
-              legend_after
               legend
               legend_before
+              legend_after
               title
               after_image {
                 publicURL

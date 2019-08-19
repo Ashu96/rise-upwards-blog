@@ -4,6 +4,7 @@ import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { OutLineButton, PrimaryButton } from '../styles/buttons'
 import { Heading1, Heading4, BodyText } from '../styles/text'
+import { extractQueryData } from '../utils'
 
 const HeroContentContainer = Styled.div`
   text-align: ${props => (props.splitScreen ? 'left' : 'center')};
@@ -25,7 +26,8 @@ const HeroContentContainer = Styled.div`
     
     & p {
       @media (min-width: 768px) {
-        padding: ${props => props.splitScreen ? '0px 25% 0px 0px' : '0px 20%'};
+        padding: ${props =>
+          props.splitScreen ? '0px 25% 0px 0px' : '0px 20%'};
       }
     }
 
@@ -41,6 +43,7 @@ const HeroContentContainer = Styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
     & button {
       width: 100%;
@@ -53,6 +56,7 @@ const HeroContentContainer = Styled.div`
     @media (min-width: 768px) {
       flex-direction: row;
       justify-content: center;
+      width: auto;
       & button {
         width: auto;
       }
@@ -116,19 +120,15 @@ function HeroSection({ id }) {
     }
   `)
 
-  if (!data) {
-    return null
-  }
+  const node = extractQueryData({
+    data: data.allHeroSection,
+    id
+  })
 
-  const currentHeroSection = data.allHeroSection.edges.filter(
-    edge => edge.node.strapiId === id.trim()
-  )
-
-  const { node } =
-    currentHeroSection && currentHeroSection.length && currentHeroSection[0]
   if (!node) {
     return null
   }
+
   const { title, subTitle, body, image, imageSrc, action, splitScreen } = node
 
   return (

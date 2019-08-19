@@ -76,7 +76,7 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
                 link
               }
             }
-            buttonType
+            actionType
           }
         }
       }
@@ -92,9 +92,9 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
     return null
   }
 
-  const { title, body, action, image, imageFirst, buttonType } = node
+  const { title, body, action, image, imageFirst, actionType } = node
 
-  const Button = getButton(buttonType)
+  const Button = getButton(actionType)
 
   return (
     <SingleMediaWithParagraphAndLinkContainer

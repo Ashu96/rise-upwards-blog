@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
-import { navigate, useStaticQuery } from 'gatsby'
+import { navigate, useStaticQuery, graphql } from 'gatsby'
 import { backgrounds } from 'uprise-uikit/colors/colors'
 
 import { Container, Row, Col } from '../styles/grid'
