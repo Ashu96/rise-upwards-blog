@@ -17,7 +17,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: process.env.DEPLOY_URL
-          ? 'https://rise-upwards.herokuapp.com'
+          ? 'https://testing-marketing.uprise.co'
           : 'http://localhost:1337',
         contentTypes: [
           `blog`,
