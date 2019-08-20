@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { primary, extended } from 'uprise-uikit/colors/colors'
+import { primary, extended } from '../constants/colors'
 
 const TextInputContainer = Styled.div`
 /****  floating-Lable style start ****/

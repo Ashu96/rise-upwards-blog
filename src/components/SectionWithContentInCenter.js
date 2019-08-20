@@ -5,7 +5,7 @@ import { navigate } from 'gatsby'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
 import { PrimaryButton } from '../styles/buttons'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 
 import Icon from './Icon'
 

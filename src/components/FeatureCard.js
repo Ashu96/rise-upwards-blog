@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 import {getPublicURL} from '../utils'
 import { Heading3, BodyText } from '../styles/text'
 

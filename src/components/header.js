@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from 'styled-components'
-import { backgrounds, primary, extended } from 'uprise-uikit/colors/colors'
+import { backgrounds, primary, extended } from '../constants/colors'
 
 import { OutLineButton, LinkButton } from '../styles/buttons'
 

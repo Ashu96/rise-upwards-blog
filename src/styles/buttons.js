@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import { primary, secondary, backgrounds } from 'uprise-uikit/colors/colors'
+import { primary, secondary, backgrounds } from '../constants/colors'
 
 const Button = Styled.button`
   display: flex;

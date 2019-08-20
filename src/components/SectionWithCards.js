@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 import { Heading2 } from '../styles/text'
 import FeatureCard from './FeatureCard'
 import { extractQueryData } from '../utils'

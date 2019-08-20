@@ -1,6 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 
 import { PrimaryButton } from '../styles/buttons'
 

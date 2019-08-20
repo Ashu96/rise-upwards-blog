@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { navigate, useStaticQuery, graphql } from 'gatsby'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'

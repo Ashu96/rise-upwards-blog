@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 import Report from './Report'
 import { Heading2 } from '../styles/text'
 import { Container, Row, Col } from '../styles/grid'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 
 const ReportSectionContainer = Styled.div`
   background-color: ${props =>

@@ -7,7 +7,7 @@ import { Heading2, BodyText } from '../styles/text'
 import { PrimaryButton } from '../styles/buttons'
 import {
   backgrounds,
-} from 'uprise-uikit/colors/colors'
+} from '../constants/colors'
  
 import Icon from './Icon'
 

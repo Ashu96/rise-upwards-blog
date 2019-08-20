@@ -5,7 +5,7 @@ import {
   primary,
   backgrounds,
   extended
-} from 'uprise-uikit/colors/colors'
+} from '../constants/colors'
 
 import { Note } from '../styles/text'
 

@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import { primary, extended } from 'uprise-uikit/colors/colors'
+import { primary, extended } from '../constants/colors'
 
 export const Heading1 = Styled.h1`
   font-family: 'proxima_nova_ltsemibold';

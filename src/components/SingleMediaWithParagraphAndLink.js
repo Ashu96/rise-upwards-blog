@@ -5,7 +5,7 @@ import { navigate, graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { Container, Row, Col } from '../styles/grid'
 import { Heading2, BodyText } from '../styles/text'
-import { backgrounds } from 'uprise-uikit/colors/colors'
+import { backgrounds } from '../constants/colors'
 import Icon from './Icon'
 import { extractQueryData, getButton } from '../utils'
 
