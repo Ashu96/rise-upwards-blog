@@ -54,6 +54,17 @@
 	font-style: normal;
 }
 
+
+@font-face {
+	font-family: "Proxima Nova Semibold";
+	src: url("Mark Simonson - Proxima Nova Semibold-webfont.eot");
+	src: url("Mark Simonson - Proxima Nova Semibold-webfont.eot?#iefix") format("embedded-opentype"),
+		url("Mark Simonson - Proxima Nova Semibold-webfont.ttf") format("truetype"),
+		url("Mark Simonson - Proxima Nova Semibold-webfont.svg#proxima_nova_ltsemibold") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
 @font-face {
 	font-family: "proxima_nova_ltthin";
 	src: url("Mark Simonson - Proxima Nova Thin-webfont.eot");
