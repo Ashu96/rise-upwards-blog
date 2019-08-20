@@ -19,8 +19,7 @@
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-markdown": "^4.1.0",
-    "styled-components": "^4.3.2",
-    "uprise-uikit": "https://bitbucket.org/upriseco/uprise-ui-kit/"
+    "styled-components": "^4.3.2"
   },
   "keywords": [
     "gatsby"
