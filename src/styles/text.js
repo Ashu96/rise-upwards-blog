@@ -49,20 +49,21 @@ export const Heading4 = Styled.h4`
 `
 
 export const BodyText = Styled.p`
-  font-family: 'Proxima Nova';
+  font-family: ${props =>
+    props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
   font-size: 18px;
-  font-weight: normal;
+  font-weight: ${props => (props.bold ? 600 : 'normal')};
   font-style: normal;
   font-stretch: normal;
   line-height: 1.56;
   letter-spacing: normal;
-  color: ${extended.charcoal.one};
+  color: ${props => (props.color ? props.color : extended.charcoal.one)};
 `
 
 export const Note = Styled.p`
   font-family: 'Proxima Nova';
   font-size: 16px;
-  font-weight: 600;
+  font-weight: ${props => (props.bold ? 600 : 'normal')};
   font-style: normal;
   font-stretch: normal;
   line-height: 1.5;
