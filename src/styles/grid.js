@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { backgrounds } from '../constants/colors'
 
 export function Container({ children, className, ...props }) {
   return (
@@ -34,4 +36,32 @@ export function Col({ children, className, ...props }) {
 
 Col.defaultProps = {
   className: ''
+}
+
+export function SectionWrapper({
+  children,
+  bgPrimary,
+  containerFluidProps,
+  containerProps
+}) {
+  return (
+    <div
+      className="container-fluid"
+      style={
+        bgPrimary
+          ? { backgroundColor: backgrounds.fadedPurple }
+          : { backgroundColor: backgrounds.white }
+      }
+      {...containerFluidProps}
+    >
+      <Container {...containerProps}>{children}</Container>
+    </div>
+  )
+}
+
+SectionWrapper.propTypes = {
+  children: PropTypes.object.isRequired,
+  // className: PropTypes.string,
+  containerFluidProps: PropTypes.object,
+  containerProps: PropTypes.object
 }
