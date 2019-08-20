@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import { primary, secondary, backgrounds } from '../constants/colors'
+import { primary, secondary, backgrounds, extended } from '../constants/colors'
 
 const Button = Styled.button`
   display: flex;
@@ -36,4 +36,18 @@ export const PrimaryButton = Styled(Button)`
   width: ${props => (props.large ? '100%' : 'auto')}
   height: ${props => (props.large ? '60px' : '')}
 
+`
+export const RoundButton = Styled(Button)`
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: ${props => props.isActive ? backgrounds.white : extended.charcoal.one};
+  background-color: ${props => props.isActive ? primary.purple : backgrounds.white};
+
+  border-radius: 25px;
+  box-shadow: 0 5px 10px 0 rgba(219, 221, 227, 0.5);
+  padding: 15px 24px;
 `
