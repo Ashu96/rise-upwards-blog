@@ -7,7 +7,7 @@ import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { primary } from '../../constants/colors'
 import { Heading1 } from '../../styles/text'
 import { LinkButton } from '../../styles/buttons'
-import { makeSlugFromTitle } from '../../utils'
+import { getSlugFromTitle } from '../../utils'
 
 function CategorySection({ Heading, title, blogs, showAll }) {
   return (
@@ -45,7 +45,7 @@ function CategorySection({ Heading, title, blogs, showAll }) {
           <Col>
             <LinkButton
               onClick={() =>
-                navigate(`/blog/category/${makeSlugFromTitle(title)}`)
+                navigate(`/blog/category/${getSlugFromTitle(title)}`)
               }
             >
               View all <Icon fill={primary.purple} />
