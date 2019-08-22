@@ -98,8 +98,8 @@ function Blog({ data }) {
   return (
     <Layout
       headerProps={{ bgPrimary: false }}
-      showSubscribe={strapiBlog.show_subscribe_form}
       showContact={strapiBlog.show_contact_form}
+      contactFormProps={{ bgPrimary: false }}
     >
       <SectionWrapper
         bgPrimary

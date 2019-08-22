@@ -33,6 +33,9 @@ const HeaderContainer = Styled.header`
         text-decoration: none;
         font-size: 16px;
         cursor: pointer;
+        &:hover {
+          color: ${primary.charcoal}
+        }
       }
     }
 

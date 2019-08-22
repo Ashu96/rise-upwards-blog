@@ -1,5 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
+import PropTypes from 'prop-types'
 import { backgrounds } from '../constants/colors'
 
 import { PrimaryButton } from '../styles/buttons'
@@ -7,7 +8,8 @@ import { Heading2, BodyText } from '../styles/text'
 import { TextInput } from '../styles/inputs'
 
 const ContactContentContainer = Styled.div`
-  background-color: ${backgrounds.fadedPurple};
+  background-color: ${props =>
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
   padding-top: 80px;
   padding-bottom: 120px;
   & .contact__header {
@@ -36,9 +38,12 @@ const ContactContentContainer = Styled.div`
   }
 `
 
-function ContactSection() {
+function ContactSection({ bgPrimary }) {
   return (
-    <ContactContentContainer classNameName="container-fluid">
+    <ContactContentContainer
+      classNameName="container-fluid"
+      bgPrimary={bgPrimary}
+    >
       <div className="container">
         <div className="row">
           <div className="col">
@@ -110,3 +115,11 @@ function ContactSection() {
 }
 
 export default ContactSection
+
+ContactSection.propTypes = {
+  bgPrimary: PropTypes.bool
+}
+
+ContactSection.defaultProps = {
+  bgPrimary: true
+}
