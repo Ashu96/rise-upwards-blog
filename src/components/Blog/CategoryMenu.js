@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import { navigate } from 'gatsby'
 import { Row, Col } from '../../styles/grid'
 import { RoundButton } from '../../styles/buttons'
 
@@ -23,15 +24,24 @@ const CategoryMenuContainer = Styled.div`
   }
 `
 
-function CategoryMenu({ menus }) {
+function CategoryMenu({ categories, activeCategory }) {
+  const menu = categories.edges.map(({ node }) => ({
+    ...node,
+    isActive: node.strapiId === activeCategory
+  }))
+
   return (
     <CategoryMenuContainer className="row">
       <Row>
         <Col>
           <div className="content">
-            {menus.map(menu => (
-              <RoundButton key={menu.key} isActive={menu.isActive}>
-                {menu.title}
+            {menu.map(category => (
+              <RoundButton
+                key={category.strapiId}
+                isActive={category.isActive}
+                onClick={() => navigate(`/blog/category/${category.slug}`)}
+              >
+                {category.title}
               </RoundButton>
             ))}
           </div>
