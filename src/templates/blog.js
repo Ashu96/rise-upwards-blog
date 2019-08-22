@@ -2,16 +2,82 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
+import ReactMarkdown from 'react-markdown'
 import Layout from '../components/layout'
 import RelatedPosts from '../components/Blog/RelatedPosts'
 import { Heading1, BodyText } from '../styles/text'
 import { SectionWrapper, Row, Col } from '../styles/grid'
-import { backgrounds } from '../constants/colors'
+import { backgrounds, primary, extended } from '../constants/colors'
 
 const BlogContentContainer = Styled.div`
   background-color: ${backgrounds.white};
+  padding: 80px 0px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(219, 221, 227, 0.8);
+`
+
+const ContentWrapper = Styled.div`
+  & img {
+    width: 100%;
+  }
+
+  & li {
+    font-family: ${props =>
+      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+    font-size: 18px;
+    font-weight: ${props => (props.bold ? 600 : 'normal')};
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+    color: ${props => (props.color ? props.color : extended.charcoal.one)};
+    
+  }
+
+  & p {
+    font-family: ${props =>
+      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+    font-size: 18px;
+    font-weight: ${props => (props.bold ? 600 : 'normal')};
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+    color: ${props => (props.color ? props.color : extended.charcoal.one)};
+    
+    margin-bottom: 50px;
+  }
+
+  & h1, h2, h3, h4 {
+    margin-bottom: 20px;
+  }
+
+  & h2 {
+    font-family: 'proxima_nova_ltsemibold';
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+    color: ${primary.charcoal};
+  }
+
+  & h3 {
+    font-family: 'proxima_nova_ltsemibold';
+    font-size: 24px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+    color: ${primary.charcoal};Z
+  }
+
 `
 
 function Blog({ data }) {
@@ -56,7 +122,9 @@ function Blog({ data }) {
                 className="mgn-t-100 mgn-b-40"
                 alt="nesting"
               />
-              <BodyText className="mgn-b-60">{strapiBlog.content}</BodyText>
+              <ContentWrapper>
+                <ReactMarkdown source={strapiBlog.content} />
+              </ContentWrapper>
             </Col>
           </Row>
         </BlogContentContainer>
