@@ -1,3 +1,9 @@
+function getStrapiURL() {
+  return process.env.NODE_ENV === 'development'
+    ? 'http://localhost:1337'
+    : 'http://testing-marketing.uprise.co'
+}
+
 module.exports = {
   siteMetadata: {
     title: `Rise upwards`,
@@ -16,10 +22,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.DEPLOY_URL
-          ? 'https://testing-marketing.uprise.co'
-          : 'http://localhost:1337',
+        apiURL: getStrapiURL(),
         contentTypes: [
+          `blogcategories`,
           `blog`,
           `herosection`,
           `page`,
