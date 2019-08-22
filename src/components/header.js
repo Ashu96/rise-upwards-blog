@@ -8,11 +8,12 @@ import { backgrounds, primary, extended } from '../constants/colors'
 import { OutLineButton, LinkButton } from '../styles/buttons'
 
 const HeaderContainer = Styled.header`
-  background-color: ${backgrounds.fadedPurple};
-  min-height: 70px;
+  background-color: ${props =>
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
+  height: 70px;
 
   & .row {
-    padding: 27px 0px;
+    padding: 15px 0px;
   }
 
   & .header__logo {
@@ -46,6 +47,10 @@ const HeaderContainer = Styled.header`
     justify-content: center;
     align-items: center;
 
+    & button {
+      height: 40px;
+    }
+
     & button:first-child {
       margin-right: 16px;
     }
@@ -58,8 +63,8 @@ const HeaderContainer = Styled.header`
 
 `
 
-const Header = ({ siteTitle }) => (
-  <HeaderContainer className="container-fluid nav-header">
+const Header = ({ siteTitle, bgPrimary }) => (
+  <HeaderContainer className="container-fluid nav-header" bgPrimary={bgPrimary}>
     <Helmet htmlAttributes={{ lang: 'en' }}>
       <meta charSet="utf-8" />
       <meta
@@ -81,16 +86,16 @@ provider in Australia."
           </Link>
           <ul className="">
             <li>
-              <Link to="/">For Employers</Link>
+              <Link to="/how-it-works">For Employers</Link>
             </li>
             <li>
-              <Link to="/">For Employees</Link>
+              <Link to="/outcomes">For Employees</Link>
             </li>
             <li>
               <Link to="/">Pricing</Link>
             </li>
             <li>
-              <Link to="/">Help</Link>
+              <Link to="/blog">Help</Link>
             </li>
           </ul>
         </div>
@@ -105,11 +110,13 @@ provider in Australia."
 )
 
 Header.propTypes = {
-  siteTitle: PropTypes.string
+  siteTitle: PropTypes.string,
+  bgPrimary: PropTypes.bool
 }
 
 Header.defaultProps = {
-  siteTitle: ``
+  siteTitle: ``,
+  bgPrimary: true
 }
 
 export default Header
