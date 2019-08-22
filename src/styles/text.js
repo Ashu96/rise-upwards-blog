@@ -57,6 +57,7 @@ export const BodyText = Styled.p`
   font-stretch: normal;
   line-height: 1.56;
   letter-spacing: normal;
+  text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
   color: ${props => (props.color ? props.color : extended.charcoal.one)};
 `
 

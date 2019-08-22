@@ -50,4 +50,8 @@ export const RoundButton = Styled(Button)`
   border-radius: 25px;
   box-shadow: 0 5px 10px 0 rgba(219, 221, 227, 0.5);
   padding: 15px 24px;
+
+  &:hover {
+    box-shadow: 10px 10px 10px 0 rgba(219, 221, 227, 0.8);
+  }
 `

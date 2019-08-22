@@ -60,7 +60,7 @@ export function SectionWrapper({
 }
 
 SectionWrapper.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
   // className: PropTypes.string,
   containerFluidProps: PropTypes.object,
   containerProps: PropTypes.object
