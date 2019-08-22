@@ -66,3 +66,10 @@ export function extractQueryData({ data, id }) {
 
   return node
 }
+
+export function getSlugFromTitle(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^\w ]+/g, '')
+    .replace(/ +/g, '-')
+}
