@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import {backgrounds, extended} from '../../constants/colors'
-import {Row, Col} from '../../styles/grid'
+import {Col} from '../../styles/grid'
 import {Heading1, BodyText} from '../../styles/text'
 
 const FeaturedBlogContainer = Styled.div`
@@ -46,7 +46,7 @@ function FeaturedBlogCard({ title, media, body, date, category }) {
   return (
     <FeaturedBlogContainer className='row'>
       <Col className='col-lg-6'>
-        <img src={media}/>
+        <img src={media} alt='featured'/>
       </Col>
       <Col className='col-lg-6'>
         <div className='content'>
