@@ -1,6 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { useStaticQuery, navigate, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 // import Img from 'gatsby-image'
 import { Heading2 } from '../styles/text'
 import { getPublicURL } from '../utils'
