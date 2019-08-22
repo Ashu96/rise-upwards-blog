@@ -16,7 +16,8 @@ const Layout = ({
   showContact,
   showSubscribe,
   showHeader,
-  showFooter
+  showFooter,
+  headerProps
 }) => (
   <StaticQuery
     query={graphql`
@@ -30,7 +31,7 @@ const Layout = ({
     `}
     render={data => (
       <>
-        {showHeader && <Header siteTitle={data.site.siteMetadata.title} />}
+        {showHeader && <Header siteTitle={data.site.siteMetadata.title} {...headerProps} />}
         <main>{children}</main>
         {showContact && <ContactSection />}
         {showSubscribe && <SubscribeSection />}
