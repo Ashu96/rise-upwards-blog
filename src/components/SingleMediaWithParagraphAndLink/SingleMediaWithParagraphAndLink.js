@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { navigate, graphql, useStaticQuery } from 'gatsby'
+import { navigate } from 'gatsby'
 import Img from 'gatsby-image'
-import { Container, Row, Col } from '../styles/grid'
-import { Heading2, BodyText } from '../styles/text'
-import { backgrounds } from '../constants/colors'
-import Icon from './Icon'
-import { extractQueryData, getButton } from '../utils'
+import { Container, Row, Col } from '../../styles/grid'
+import { Heading2, BodyText } from '../../styles/text'
+import { backgrounds, primary } from '../../constants/colors'
+import Icon from '../Icon'
+import { getButton } from '../../utils'
 
 const SingleMediaWithParagraphAndLinkContainer = Styled.div`
   background-color: ${props =>
@@ -52,48 +52,15 @@ const SingleMediaWithParagraphAndLinkContainer = Styled.div`
   }
 `
 
-function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
-  const data = useStaticQuery(graphql`
-    {
-      allStrapiSectionwithcontentandimage {
-        edges {
-          node {
-            id
-            strapiId
-            title
-            body
-            imageFirst
-            image {
-              childImageSharp {
-                fluid(maxWidth: 285) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            action {
-              primary {
-                label
-                link
-              }
-            }
-            actionType
-          }
-        }
-      }
-    }
-  `)
-
-  const node = extractQueryData({
-    data: data.allStrapiSectionwithcontentandimage,
-    id
-  })
-
-  if (!node) {
-    return null
-  }
-
-  const { title, body, action, image, imageFirst, actionType } = node
-
+function SingleMediaWithParagraphAndLink({
+  bgPrimary,
+  title,
+  body,
+  action,
+  image,
+  imageFirst,
+  actionType
+}) {
   const Button = getButton(actionType)
 
   return (
@@ -119,7 +86,7 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
                   onClick={() => navigate(action.primary.link)}
                 >
                   {action.primary.label}
-                  <Icon fill={backgrounds.fadedPurple} />
+                  <Icon fill={primary.purple} />
                 </Button>
               )}
             </div>
@@ -131,11 +98,24 @@ function SingleMediaWithParagraphAndLink({ id, bgPrimary }) {
 }
 
 SingleMediaWithParagraphAndLink.propTypes = {
-  bgPrimary: PropTypes.bool,
-  id: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  action: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
+  imageFirst: PropTypes.bool.isRequired,
+  actionType: PropTypes.string.isRequired,
+  bgPrimary: PropTypes.bool
 }
 
 SingleMediaWithParagraphAndLink.defaultProps = {
+  title: `Uprise is the only Employee Assistance Program based on science with published research`,
+  body: `Uprise only uses evidence-based approaches and has been evaluated in 14 published studies.
+   Our Upskill Program outcomes are holistic and sustained for 3 months on measures 
+  like wellbeing, engagement, performance, and stress and are reported quarterly. `,
+  action: {},
+  image: null,
+  imageFirst: false,
+  actionType:'link',
   bgPrimary: false
 }
 
