@@ -30,7 +30,8 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "storybook": "start-storybook"
   },
   "repository": {
     "type": "git",
@@ -38,5 +39,14 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-knobs": "^5.1.11",
+    "@storybook/addon-notes": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react": "^5.1.11",
+    "babel-loader": "^8.0.6"
   }
 }
