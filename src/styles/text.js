@@ -46,6 +46,7 @@ export const Heading4 = Styled.h4`
   line-height: 1.5;
   letter-spacing: normal;
   color: ${primary.charcoal};
+  text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
 `
 
 export const BodyText = Styled.p`
@@ -69,6 +70,7 @@ export const Note = Styled.p`
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
+  text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
   color: ${props => (props.color ? props.color : extended.charcoal.three)};
 `
 export const Label = Styled.p`

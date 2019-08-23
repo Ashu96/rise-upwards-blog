@@ -76,7 +76,7 @@ function SectionWithContentAndImage({
               {action && (
                 <PrimaryButton className="mgn-t-50" onClick={() => navigate(action.link)}>
                   {action.label}
-                  <Icon fill={backgrounds.fadedPurple.justWhite} />
+                  <Icon fill={backgrounds.justWhite} />
                 </PrimaryButton>
               )}
             </div>

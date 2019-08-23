@@ -24,7 +24,8 @@ export const OutLineButton = Styled(Button)`
 `
 export const LinkButton = Styled(Button)`
   font-size: 16px;
-  color: ${primary.purple};
+  color: ${props =>
+    props.secondary ? secondary.electricBlue : primary.purple};
 `
 export const PrimaryButton = Styled(Button)`
   border-radius: ${props => (props.large ? '10px' : '5px')}
@@ -44,8 +45,10 @@ export const RoundButton = Styled(Button)`
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: ${props => props.isActive ? backgrounds.white : extended.charcoal.one};
-  background-color: ${props => props.isActive ? primary.purple : backgrounds.white};
+  color: ${props =>
+    props.isActive ? backgrounds.white : extended.charcoal.one};
+  background-color: ${props =>
+    props.isActive ? primary.purple : backgrounds.white};
 
   border-radius: 25px;
   box-shadow: 0 5px 10px 0 rgba(219, 221, 227, 0.5);

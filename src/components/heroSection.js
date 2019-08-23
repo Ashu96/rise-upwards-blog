@@ -32,6 +32,7 @@ const HeroContentContainer = Styled.div`
     }
 
     @media (min-width: 768px) {
+      justify-content: center;
       flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
       max-width: ${props => (props.splitScreen ? '50%' : '100%')};
     }
@@ -109,7 +110,7 @@ function HeroSection({ id }) {
             }
             image {
               childImageSharp {
-                fluid(maxWidth: 1160, maxHeight: 500) {
+                fluid(maxWidth: 1160) {
                   ...GatsbyImageSharpFluid
                 }
               }
