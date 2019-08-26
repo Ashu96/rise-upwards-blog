@@ -24,6 +24,8 @@ module.exports = {
       options: {
         apiURL: getStrapiURL(),
         contentTypes: [
+          `navitems`,
+          `headers`,
           `blogcategories`,
           `blog`,
           `herosection`,
