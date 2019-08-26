@@ -1,6 +1,5 @@
 import React from 'react'
-import SECTION_TYPES from '../constants/sectionTypes'
-import BUTTON_TYPES from '../constants/buttonTypes'
+import { BUTTON_TYPES, NAV_ITEM_TYPES, SECTION_TYPES } from '../constants'
 import { PrimaryButton, LinkButton, OutLineButton } from '../styles/buttons'
 import HeroSection from '../components/HeroSection'
 import ContentWithImageList from '../components/ContentWithImageList'
@@ -9,6 +8,12 @@ import HeadingWithSingleMediaAndButton from '../components/HeadingWithSingleMedi
 import SingleMediaWithParagraphAndLink from '../components/SingleMediaWithParagraphAndLink'
 import Reports from '../components/Reports'
 import SectionWithCards from '../components/SectionWithCards'
+import {
+  NavLogo,
+  NavLink,
+  NavButton,
+  NavDropDown
+} from '../components/Header/NavItems'
 
 export function getComponent(type) {
   switch (type) {
@@ -72,4 +77,17 @@ export function getSlugFromTitle(title) {
     .toLowerCase()
     .replace(/[^\w ]+/g, '')
     .replace(/ +/g, '-')
+}
+
+export function getNavItem(item) {
+  switch (item.type) {
+    case NAV_ITEM_TYPES.LOGO:
+      return NavLogo
+    case NAV_ITEM_TYPES.BUTTON:
+      return NavButton
+    case NAV_ITEM_TYPES.DROP_DOWN:
+      return NavDropDown
+    default:
+      return NavLink
+  }
 }
