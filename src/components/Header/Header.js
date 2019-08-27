@@ -35,7 +35,7 @@ const HeaderContainer = Styled.header`
       & a {
         display: flex;
         align-items: center;
-        color: ${extended.charcoal.three};
+        color: ${extended.charcoal.one};
         text-decoration: none;
         font-size: 16px;
         cursor: pointer;
@@ -48,6 +48,16 @@ const HeaderContainer = Styled.header`
     @media (min-width: 768px) {
       display: flex;
       align-items: center;
+    }
+  }
+
+  & .header__nav-dropdown {
+    position: relative;
+    &:hover > .dropdown {
+      opacity: 1;
+      /* z-index: 1; */
+      /* transform: scale(1); */
+      /* transform: translateY(0px); */
     }
   }
 
@@ -72,7 +82,8 @@ const HeaderContainer = Styled.header`
 
 `
 
-function Header({ bgPrimary, siteTitle, navItems }) {
+function Header({ bgPrimary, siteTitle, navItems, allNavItems }) {
+  
   const leftHSNavItems = navItems.filter(item => !item.RHS)
   const rightHSNavItems = navItems.filter(item => item.RHS)
 
@@ -93,7 +104,13 @@ provider in Australia.`}
             <ul>
               {leftHSNavItems.map(item => {
                 const NavItem = getNavItem(item)
-                return <NavItem key={item.id} item={item} />
+                return (
+                  <NavItem
+                    key={item.id}
+                    item={item}
+                    navItems={allNavItems[item.id]}
+                  />
+                )
               })}
             </ul>
           </Col>
@@ -101,7 +118,13 @@ provider in Australia.`}
             <ul>
               {rightHSNavItems.map(item => {
                 const NavItem = getNavItem(item)
-                return <NavItem key={item.id} item={item} />
+                return (
+                  <NavItem
+                    key={item.id}
+                    item={item}
+                    allNavItems={allNavItems}
+                  />
+                )
               })}
             </ul>
           </Col>

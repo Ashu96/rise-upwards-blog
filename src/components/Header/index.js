@@ -29,21 +29,55 @@ function HeaderContainer({ siteTitle, bgPrimary }) {
           }
         }
       }
+      allStrapiNavItems: allStrapiNavitems {
+        group(field: strapiId) {
+          field
+          fieldValue
+          nodes {
+            RHS
+            actionType
+            active
+            id
+            link
+            strapiId
+            title
+            type
+            navitems {
+              actionType
+              id
+              link
+              active
+              title
+              type
+            }
+          }
+        }
+      }
     }
   `)
 
-  console.log({ strapiHeaders: data.strapiHeaders })
-  const { strapiHeaders } = data
+  const { strapiHeaders, allStrapiNavItems } = data
 
   const { navItems } = strapiHeaders
 
+  const allNavItems = {}
+
+  allStrapiNavItems.group.forEach(item => {
+    allNavItems[item.fieldValue] = item.nodes[0]
+  })
+
   return (
-    <Header bgPrimary={bgPrimary} siteTitle={siteTitle} navItems={navItems} />
+    <Header
+      bgPrimary={bgPrimary}
+      siteTitle={siteTitle}
+      navItems={navItems}
+      allNavItems={allNavItems}
+    />
   )
 }
 
 HeaderContainer.propTypes = {
-  bgPrimary: PropTypes.bool,
+  bgPrimary: PropTypes.bool
   // id: PropTypes.string.isRequired
 }
 
