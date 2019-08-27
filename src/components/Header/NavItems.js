@@ -71,7 +71,6 @@ export function NavDropDown({ item, navItems }) {
         {item.type === 'DROP_DOWN' && (
           <Icon
             fill={extended.charcoal.three}
-            rotate={90}
             className="header__nav-item--icon"
           />
         )}

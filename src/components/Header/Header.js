@@ -53,6 +53,12 @@ const HeaderContainer = Styled.header`
 
   & .header__nav-dropdown {
     position: relative;
+    & .header__nav-item--icon {
+      transform: rotate(90deg);
+    }
+    &:hover .header__nav-item--icon {
+      transform: rotate(-90deg);
+    }
     &:hover > .dropdown {
       opacity: 1;
       /* z-index: 1; */
