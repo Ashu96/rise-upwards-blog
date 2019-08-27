@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { backgrounds } from '../constants/colors'
-import {getPublicURL} from '../utils'
+// import {getPublicURL} from '../utils'
 import { Heading3, BodyText } from '../styles/text'
 
 const FeatureCardContainer = Styled.div`
@@ -46,7 +46,7 @@ function FeatureCard({ title, imageSrc, imageFluid, body }) {
     <FeatureCardContainer>
       <Heading3>{title}</Heading3>
       <div className="image-container">
-        {imageSrc && <img src={getPublicURL(imageSrc)} alt={title} />}
+        {/* {imageSrc && <img src={getPublicURL(imageSrc)} alt={title} />} */}
         {imageFluid && <Img fluid={imageFluid} alt={title} />}
       </div>
       <BodyText>{body}</BodyText>
