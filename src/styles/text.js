@@ -2,7 +2,7 @@ import Styled from 'styled-components'
 import { primary, extended } from '../constants/colors'
 
 export const Heading1 = Styled.h1`
-  font-family: 'proxima_nova_ltsemibold';
+  font-family: 'Proxima Nova Semibold';
   font-size: 42px;
   font-weight: 600;
   font-style: normal;
@@ -14,7 +14,7 @@ export const Heading1 = Styled.h1`
 `
 
 export const Heading2 = Styled.h2`
-  font-family: 'proxima_nova_ltsemibold';
+  font-family: 'Proxima Nova Semibold';
   font-size: 32px;
   font-weight: 600;
   font-style: normal;
@@ -26,7 +26,7 @@ export const Heading2 = Styled.h2`
 `
 
 export const Heading3 = Styled.h3`
-  font-family: 'proxima_nova_ltsemibold';
+  font-family: 'Proxima Nova Semibold';
   font-size: 24px;
   font-weight: 600;
   font-style: normal;

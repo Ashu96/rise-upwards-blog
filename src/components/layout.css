@@ -17,7 +17,7 @@ body {
 }
 
 .text--semi-bold {
-  font-family: 'proxima_nova_ltsemibold';
+  font-family: 'Proxima Nova Semibold';
 }
 
 h1,
@@ -32,7 +32,7 @@ a {
 }
 
 button {
-  font-family: 'proxima_nova_ltsemibold';
+  font-family: 'Proxima Nova Semibold';
 }
 
 /* Margin top */
