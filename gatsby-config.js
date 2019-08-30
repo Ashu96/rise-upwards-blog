@@ -1,4 +1,5 @@
 function getStrapiURL() {
+  console.log(`Env: ${process.env.NODE_ENV}`)
   return process.env.NODE_ENV === 'development'
     ? 'http://localhost:1337'
     : 'http://testing-marketing.uprise.co'
@@ -24,6 +25,7 @@ module.exports = {
       options: {
         apiURL: getStrapiURL(),
         contentTypes: [
+          `contactbanner`,
           `navitems`,
           `headers`,
           `blogcategories`,
