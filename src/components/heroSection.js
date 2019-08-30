@@ -9,7 +9,7 @@ import { extractQueryData } from '../utils'
 
 const HeroContentContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
+		props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
   text-align: ${props => (props.splitScreen ? 'left' : 'center')};
   padding-top: 100px;
   padding-bottom: ${props => (props.noMedia ? '0px' : '100px')};
@@ -30,7 +30,7 @@ const HeroContentContainer = Styled.div`
     & p {
       @media (min-width: 768px) {
         padding: ${props =>
-          props.splitScreen ? '0px 25% 0px 0px' : '0px 20%'};
+					props.splitScreen ? '0px 25% 0px 0px' : '0px 20%'};
       }
     }
 
@@ -90,100 +90,100 @@ const HeroContentContainer = Styled.div`
 `
 
 function HeroSection({ id, bgPrimary }) {
-  const data = useStaticQuery(graphql`
-    {
-      allHeroSection: allStrapiHerosection {
-        edges {
-          node {
-            id
-            strapiId
-            title
-            subTitle
-            body
-            splitScreen
-            action {
-              primary {
-                label
-                link
-              }
-              secondary {
-                label
-                link
-              }
-            }
-            image {
-              childImageSharp {
-                fluid(maxWidth: 1160) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+	const data = useStaticQuery(graphql`
+		{
+			allHeroSection: allStrapiHerosection {
+				edges {
+					node {
+						id
+						strapiId
+						title
+						subTitle
+						body
+						splitScreen
+						action {
+							primary {
+								label
+								link
+							}
+							secondary {
+								label
+								link
+							}
+						}
+						image {
+							childImageSharp {
+								fluid(maxWidth: 1160) {
+									...GatsbyImageSharpFluid
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`)
 
-  const node = extractQueryData({
-    data: data.allHeroSection,
-    id
-  })
+	const node = extractQueryData({
+		data: data.allHeroSection,
+		id
+	})
 
-  if (!node) {
-    return null
-  }
+	if (!node) {
+		return null
+	}
 
-  const { title, subTitle, body, image, action, splitScreen } = node
+	const { title, subTitle, body, image, action, splitScreen } = node
 
-  const noMedia = !image
+	const noMedia = !image
 
-  return (
-    <HeroContentContainer
-      className="container-fluid"
-      bgPrimary={bgPrimary}
-      splitScreen={splitScreen}
-      noMedia={noMedia}
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <div className="hero__heading" s>
-              <div className="hero__content">
-                <Heading1 className="text--semi-bold mgn-b-10">
-                  {title}
-                </Heading1>
-                <Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
-                <BodyText>{body}</BodyText>
-                <div className="hero__cta-container">
-                  {action.primary && (
-                    <PrimaryButton
-                      onClick={() => navigate(action.primary.link)}
-                    >
-                      {action.primary.label}
-                    </PrimaryButton>
-                  )}
-                  {action.secondary && (
-                    <OutLineButton
-                      onClick={() => navigate(action.secondary.link)}
-                    >
-                      {action.secondary.label}
-                    </OutLineButton>
-                  )}
-                </div>
-              </div>
-              {image && (
-                <div className="hero__image-container">
-                  {image && (
-                    <Img fluid={image.childImageSharp.fluid} alt={'hero'} />
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </HeroContentContainer>
-  )
+	return (
+		<HeroContentContainer
+			className="container-fluid"
+			bgPrimary={bgPrimary}
+			splitScreen={splitScreen}
+			noMedia={noMedia}
+		>
+			<div className="container">
+				<div className="row">
+					<div className="col">
+						<div className="hero__heading" s>
+							<div className="hero__content">
+								<Heading1 className="text--semi-bold mgn-b-10">
+									{title}
+								</Heading1>
+								<Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
+								<BodyText>{body}</BodyText>
+								<div className="hero__cta-container">
+									{action.primary && (
+										<PrimaryButton
+											onClick={() => navigate(action.primary.link)}
+										>
+											{action.primary.label}
+										</PrimaryButton>
+									)}
+									{action.secondary && (
+										<OutLineButton
+											onClick={() => navigate(action.secondary.link)}
+										>
+											{action.secondary.label}
+										</OutLineButton>
+									)}
+								</div>
+							</div>
+							{image && (
+								<div className="hero__image-container">
+									{image && (
+										<Img fluid={image.childImageSharp.fluid} alt={'hero'} />
+									)}
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
+			</div>
+		</HeroContentContainer>
+	)
 }
 
 export default HeroSection

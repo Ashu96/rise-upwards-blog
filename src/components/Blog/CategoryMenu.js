@@ -25,39 +25,39 @@ const CategoryMenuContainer = Styled.div`
 `
 
 function CategoryMenu({ categories, activeCategory }) {
-  const menu = categories.edges.map(({ node }) => ({
-    ...node,
-    isActive: node.strapiId === activeCategory
-  }))
+	const menu = categories.edges.map(({ node }) => ({
+		...node,
+		isActive: node.strapiId === activeCategory
+	}))
 
-  return (
-    <CategoryMenuContainer className="row">
-      <Row>
-        <Col>
-          <div className="content">
-            {menu.map(category => (
-              <RoundButton
-                key={category.strapiId}
-                isActive={category.isActive}
-                onClick={() => navigate(`/blog/category/${category.slug}`)}
-              >
-                {category.title}
-              </RoundButton>
-            ))}
-          </div>
-        </Col>
-      </Row>
-    </CategoryMenuContainer>
-  )
+	return (
+		<CategoryMenuContainer className="row">
+			<Row>
+				<Col>
+					<div className="content">
+						{menu.map(category => (
+							<RoundButton
+								key={category.strapiId}
+								isActive={category.isActive}
+								onClick={() => navigate(`/blog/category/${category.slug}`)}
+							>
+								{category.title}
+							</RoundButton>
+						))}
+					</div>
+				</Col>
+			</Row>
+		</CategoryMenuContainer>
+	)
 }
 
 export default CategoryMenu
 
 CategoryMenu.propTypes = {
-  menus: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      isActive: PropTypes.bool
-    }).isRequired
-  )
+	menus: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string.isRequired,
+			isActive: PropTypes.bool
+		}).isRequired
+	)
 }

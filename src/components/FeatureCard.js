@@ -41,22 +41,22 @@ const FeatureCardContainer = Styled.div`
 `
 
 function FeatureCard({ title, media, body }) {
-  return (
-    <FeatureCardContainer>
-      <Heading3>{title}</Heading3>
-      <div className="image-container">
-        {media && <Img fluid={media} alt={title} />}
-      </div>
-      <BodyText>{body}</BodyText>
-    </FeatureCardContainer>
-  )
+	return (
+		<FeatureCardContainer>
+			<Heading3>{title}</Heading3>
+			<div className="image-container">
+				{media && <Img fluid={media} alt={title} />}
+			</div>
+			<BodyText>{body}</BodyText>
+		</FeatureCardContainer>
+	)
 }
 
 export default FeatureCard
 
 FeatureCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string,
-  media: PropTypes.object,
-  body: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	imageSrc: PropTypes.string,
+	media: PropTypes.object,
+	body: PropTypes.string.isRequired
 }

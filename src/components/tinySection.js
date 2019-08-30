@@ -31,20 +31,20 @@ const TinyContainer = Styled.div`
 `
 
 function TinySection() {
-  return (
-    <TinyContainer className="container-fluid">
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <div className="content">
-              <PrimaryButton secondary>I am an Employer</PrimaryButton>
-              <PrimaryButton secondary>I am an Employee</PrimaryButton>
-            </div>
-          </div>
-        </div>
-      </div>
-    </TinyContainer>
-  )
+	return (
+		<TinyContainer className="container-fluid">
+			<div className="container">
+				<div className="row">
+					<div className="col">
+						<div className="content">
+							<PrimaryButton secondary>I am an Employer</PrimaryButton>
+							<PrimaryButton secondary>I am an Employee</PrimaryButton>
+						</div>
+					</div>
+				</div>
+			</div>
+		</TinyContainer>
+	)
 }
 
 export default TinySection

@@ -23,7 +23,7 @@ const ContentWrapper = Styled.div`
 
   & li {
     font-family: ${props =>
-      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+			props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
     font-size: 18px;
     font-weight: ${props => (props.bold ? 600 : 'normal')};
     font-style: normal;
@@ -37,7 +37,7 @@ const ContentWrapper = Styled.div`
 
   & p {
     font-family: ${props =>
-      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+			props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
     font-size: 18px;
     font-weight: ${props => (props.bold ? 600 : 'normal')};
     font-style: normal;
@@ -81,85 +81,85 @@ const ContentWrapper = Styled.div`
 `
 
 function Blog({ data }) {
-  const { strapiBlog } = data
+	const { strapiBlog } = data
 
-  const category =
-    strapiBlog &&
-    strapiBlog.blogcategories &&
-    strapiBlog.blogcategories[0] &&
-    strapiBlog.blogcategories[0].title
+	const category =
+		strapiBlog &&
+		strapiBlog.blogcategories &&
+		strapiBlog.blogcategories[0] &&
+		strapiBlog.blogcategories[0].title
 
-  const relatedBlogsID =
-    strapiBlog &&
-    strapiBlog.blogcategories &&
-    strapiBlog.blogcategories[0] &&
-    strapiBlog.blogcategories[0].blogs
+	const relatedBlogsID =
+		strapiBlog &&
+		strapiBlog.blogcategories &&
+		strapiBlog.blogcategories[0] &&
+		strapiBlog.blogcategories[0].blogs
 
-  return (
-    <Layout
-      headerProps={{ bgPrimary: false }}
-      showContact={strapiBlog.show_contact_form}
-      contactFormProps={{ bgPrimary: false }}
-    >
-      <SectionWrapper
-        bgPrimary
-        containerProps={{
-          style: { padding: '100px 0px' }
-        }}
-      >
-        <BlogContentContainer>
-          <Row className="justify-content-center">
-            <Col className="col-lg-9">
-              <Heading1 textCenter className="mgn-t-60">
-                {strapiBlog.title}
-              </Heading1>
-              <BodyText textCenter className="mgn-t-20">
-                {strapiBlog.date} | {category}
-              </BodyText>
+	return (
+		<Layout
+			headerProps={{ bgPrimary: false }}
+			showContact={strapiBlog.show_contact_form}
+			contactFormProps={{ bgPrimary: false }}
+		>
+			<SectionWrapper
+				bgPrimary
+				containerProps={{
+					style: { padding: '100px 0px' }
+				}}
+			>
+				<BlogContentContainer>
+					<Row className="justify-content-center">
+						<Col className="col-lg-9">
+							<Heading1 textCenter className="mgn-t-60">
+								{strapiBlog.title}
+							</Heading1>
+							<BodyText textCenter className="mgn-t-20">
+								{strapiBlog.date} | {category}
+							</BodyText>
 
-              <Img
-                fluid={strapiBlog.image.childImageSharp.fluid}
-                className="mgn-t-100 mgn-b-40"
-                alt="nesting"
-              />
-              <ContentWrapper>
-                <ReactMarkdown source={strapiBlog.content} />
-              </ContentWrapper>
-            </Col>
-          </Row>
-        </BlogContentContainer>
-        <RelatedPosts relatedBlogsID={relatedBlogsID} />
-      </SectionWrapper>
-    </Layout>
-  )
+							<Img
+								fluid={strapiBlog.image.childImageSharp.fluid}
+								className="mgn-t-100 mgn-b-40"
+								alt="nesting"
+							/>
+							<ContentWrapper>
+								<ReactMarkdown source={strapiBlog.content} />
+							</ContentWrapper>
+						</Col>
+					</Row>
+				</BlogContentContainer>
+				<RelatedPosts relatedBlogsID={relatedBlogsID} />
+			</SectionWrapper>
+		</Layout>
+	)
 }
 
 export default Blog
 
 export const query = graphql`
-  query($id: String!) {
-    strapiBlog(id: { eq: $id }) {
-      id
-      strapiId
-      title
-      body
-      date(formatString: "MMMM DD, YYYY")
-      content
-      slug
-      image {
-        childImageSharp {
-          fluid(maxWidth: 770) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      show_subscribe_form
-      show_contact_form
-      blogcategories {
-        id
-        title
-        blogs
-      }
-    }
-  }
+	query($id: String!) {
+		strapiBlog(id: { eq: $id }) {
+			id
+			strapiId
+			title
+			body
+			date(formatString: "MMMM DD, YYYY")
+			content
+			slug
+			image {
+				childImageSharp {
+					fluid(maxWidth: 770) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			show_subscribe_form
+			show_contact_form
+			blogcategories {
+				id
+				title
+				blogs
+			}
+		}
+	}
 `

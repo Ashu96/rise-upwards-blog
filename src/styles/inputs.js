@@ -129,28 +129,28 @@ label {
 `
 
 export function TextInput({ id, label, isRequired }) {
-  return (
-    <TextInputContainer>
-      <div className="floating-label">
-        <input
-          className="floating-input"
-          type="text"
-          id={id}
-          required={isRequired}
-        />
-        <span className="highlight" />
-        <label htmlFor={id}>{label}</label>
-      </div>
-    </TextInputContainer>
-  )
+	return (
+		<TextInputContainer>
+			<div className="floating-label">
+				<input
+					className="floating-input"
+					type="text"
+					id={id}
+					required={isRequired}
+				/>
+				<span className="highlight" />
+				<label htmlFor={id}>{label}</label>
+			</div>
+		</TextInputContainer>
+	)
 }
 
 TextInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  isRequired: PropTypes.bool
+	id: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	isRequired: PropTypes.bool
 }
 
 TextInput.defaultProps = {
-  isRequired: false
+	isRequired: false
 }

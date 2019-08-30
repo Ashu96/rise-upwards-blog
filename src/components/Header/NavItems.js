@@ -41,62 +41,62 @@ const DropDown = Styled.div`
 `
 
 export function NavLogo({ item }) {
-  return (
-    <li className="header__logo">
-      <Link to={item.link}>
-        {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
-        {!item.image && item.title}
-      </Link>
-    </li>
-  )
+	return (
+		<li className="header__logo">
+			<Link to={item.link}>
+				{item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
+				{!item.image && item.title}
+			</Link>
+		</li>
+	)
 }
 
 export function NavLink({ item, classNames }) {
-  return (
-    <li className={classNames ? classNames : 'header__nav-item'}>
-      <Link to={item.link} activeClassName="active">
-        {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
-        {!item.image && item.title}
-      </Link>
-    </li>
-  )
+	return (
+		<li className={classNames ? classNames : 'header__nav-item'}>
+			<Link to={item.link} activeClassName="active">
+				{item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
+				{!item.image && item.title}
+			</Link>
+		</li>
+	)
 }
 
 export function NavDropDown({ item, navItems }) {
-    return (
-    <li className="header__nav-dropdown">
-      <Link to={item.link}>
-        {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
-        {!item.image && item.title}
-        {item.type === 'DROP_DOWN' && (
-          <Icon
-            fill={extended.charcoal.three}
-            className="header__nav-item--icon"
-          />
-        )}
-      </Link>
-      <DropDownMenu items={navItems.navitems} />
-    </li>
-  )
+	return (
+		<li className="header__nav-dropdown">
+			<Link to={item.link}>
+				{item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
+				{!item.image && item.title}
+				{item.type === 'DROP_DOWN' && (
+					<Icon
+						fill={extended.charcoal.three}
+						className="header__nav-item--icon"
+					/>
+				)}
+			</Link>
+			<DropDownMenu items={navItems.navitems} />
+		</li>
+	)
 }
 
 export function NavButton({ item }) {
-  const Button = getButton(item.actionType)
-  return (
-    <li className="header__nav-cta">
-      <Button onClick={() => navigate(item.link)}>
-        {!item.image && item.title}
-      </Button>
-    </li>
-  )
+	const Button = getButton(item.actionType)
+	return (
+		<li className="header__nav-cta">
+			<Button onClick={() => navigate(item.link)}>
+				{!item.image && item.title}
+			</Button>
+		</li>
+	)
 }
 
 export function DropDownMenu({ items }) {
-  return (
-    <DropDown className="dropdown">
-      {items.map(item => (
-        <NavLink classNames="menu-item" key={item.key} item={item} />
-      ))}
-    </DropDown>
-  )
+	return (
+		<DropDown className="dropdown">
+			{items.map(item => (
+				<NavLink classNames="menu-item" key={item.key} item={item} />
+			))}
+		</DropDown>
+	)
 }

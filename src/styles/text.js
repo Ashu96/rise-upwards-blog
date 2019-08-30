@@ -51,7 +51,7 @@ export const Heading4 = Styled.h4`
 
 export const BodyText = Styled.p`
   font-family: ${props =>
-    props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+		props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
   font-size: 18px;
   font-weight: ${props => (props.bold ? 600 : 'normal')};
   font-style: normal;

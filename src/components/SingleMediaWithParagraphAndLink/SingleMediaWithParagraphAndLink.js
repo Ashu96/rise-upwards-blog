@@ -12,7 +12,7 @@ import { BUTTON_TYPES } from '../../constants'
 
 const SingleMediaWithParagraphAndLinkContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
+		props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
   & .row {
     flex-direction: ${props => (props.imageFirst ? 'row' : 'row-reverse')};
@@ -54,75 +54,75 @@ const SingleMediaWithParagraphAndLinkContainer = Styled.div`
 `
 
 function SingleMediaWithParagraphAndLink({
-  bgPrimary,
-  title,
-  body,
-  action,
-  image,
-  imageFirst,
-  actionType
+	bgPrimary,
+	title,
+	body,
+	action,
+	image,
+	imageFirst,
+	actionType
 }) {
-  const Button = getButton(actionType)
-  const shouldMakeIconWhite = actionType === BUTTON_TYPES.PRIMARY
+	const Button = getButton(actionType)
+	const shouldMakeIconWhite = actionType === BUTTON_TYPES.PRIMARY
 
-  return (
-    <SingleMediaWithParagraphAndLinkContainer
-      className="container-fluid"
-      bgPrimary={bgPrimary}
-      imageFirst={imageFirst}
-    >
-      <Container>
-        <Row>
-          <Col className="col-lg-6">
-            <div className="media">
-              {image && <Img fluid={image.childImageSharp.fluid} alt={title} />}
-            </div>
-          </Col>
-          <Col className="col-lg-6">
-            <div className="content">
-              <Heading2 className="mgn-b-20">{title}</Heading2>
-              <BodyText>{body}</BodyText>
-              {action && action.primary && (
-                <Button
-                  className="mgn-t-50"
-                  onClick={() => navigate(action.primary.link)}
-                >
-                  {action.primary.label}
-                  <Icon
-                    fill={
-                      shouldMakeIconWhite ? backgrounds.white : primary.purple
-                    }
-                  />
-                </Button>
-              )}
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </SingleMediaWithParagraphAndLinkContainer>
-  )
+	return (
+		<SingleMediaWithParagraphAndLinkContainer
+			className="container-fluid"
+			bgPrimary={bgPrimary}
+			imageFirst={imageFirst}
+		>
+			<Container>
+				<Row>
+					<Col className="col-lg-6">
+						<div className="media">
+							{image && <Img fluid={image.childImageSharp.fluid} alt={title} />}
+						</div>
+					</Col>
+					<Col className="col-lg-6">
+						<div className="content">
+							<Heading2 className="mgn-b-20">{title}</Heading2>
+							<BodyText>{body}</BodyText>
+							{action && action.primary && (
+								<Button
+									className="mgn-t-50"
+									onClick={() => navigate(action.primary.link)}
+								>
+									{action.primary.label}
+									<Icon
+										fill={
+											shouldMakeIconWhite ? backgrounds.white : primary.purple
+										}
+									/>
+								</Button>
+							)}
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		</SingleMediaWithParagraphAndLinkContainer>
+	)
 }
 
 SingleMediaWithParagraphAndLink.propTypes = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  action: PropTypes.object.isRequired,
-  image: PropTypes.object.isRequired,
-  imageFirst: PropTypes.bool.isRequired,
-  actionType: PropTypes.string.isRequired,
-  bgPrimary: PropTypes.bool
+	title: PropTypes.string.isRequired,
+	body: PropTypes.string.isRequired,
+	action: PropTypes.object.isRequired,
+	image: PropTypes.object.isRequired,
+	imageFirst: PropTypes.bool.isRequired,
+	actionType: PropTypes.string.isRequired,
+	bgPrimary: PropTypes.bool
 }
 
 SingleMediaWithParagraphAndLink.defaultProps = {
-  title: `Uprise is the only Employee Assistance Program based on science with published research`,
-  body: `Uprise only uses evidence-based approaches and has been evaluated in 14 published studies.
+	title: `Uprise is the only Employee Assistance Program based on science with published research`,
+	body: `Uprise only uses evidence-based approaches and has been evaluated in 14 published studies.
    Our Upskill Program outcomes are holistic and sustained for 3 months on measures 
   like wellbeing, engagement, performance, and stress and are reported quarterly. `,
-  action: {},
-  image: null,
-  imageFirst: false,
-  actionType: 'link',
-  bgPrimary: false
+	action: {},
+	image: null,
+	imageFirst: false,
+	actionType: 'link',
+	bgPrimary: false
 }
 
 export default SingleMediaWithParagraphAndLink

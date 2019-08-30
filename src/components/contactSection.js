@@ -9,7 +9,7 @@ import { TextInput } from '../styles/inputs'
 
 const ContactContentContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
+		props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
   padding-top: 80px;
   padding-bottom: 120px;
   & .contact__header {
@@ -39,87 +39,87 @@ const ContactContentContainer = Styled.div`
 `
 
 function ContactSection({ bgPrimary }) {
-  return (
-    <ContactContentContainer
-      classNameName="container-fluid"
-      bgPrimary={bgPrimary}
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <div className="contact__header">
-              <Heading2>Get in touch</Heading2>
-              <BodyText>
-                Find out how Uprise can support your team or company
-              </BodyText>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <div className="mgn-t-40 d-flex justify-content-center">
-              <form>
-                <div className="card">
-                  <div className="row">
-                    <div className="col-6">
-                      <TextInput id="firstName" label="First Name" isRequired />
-                    </div>
-                    <div className="col-6">
-                      <TextInput id="lastName" label="Last Name" isRequired />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <TextInput id="company" label="Company" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <TextInput id="email" label="Email Address" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <TextInput id="phone" label="Phone Number" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <TextInput
-                        id="numberOfEmployees"
-                        label="Number of Employees"
-                      />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col">
-                      <TextInput
-                        id="source"
-                        label="How did you hear about Uprise?"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row mgn-t-20">
-                  <div className="col">
-                    <PrimaryButton large> Submit</PrimaryButton>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ContactContentContainer>
-  )
+	return (
+		<ContactContentContainer
+			classNameName="container-fluid"
+			bgPrimary={bgPrimary}
+		>
+			<div className="container">
+				<div className="row">
+					<div className="col">
+						<div className="contact__header">
+							<Heading2>Get in touch</Heading2>
+							<BodyText>
+								Find out how Uprise can support your team or company
+							</BodyText>
+						</div>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col">
+						<div className="mgn-t-40 d-flex justify-content-center">
+							<form>
+								<div className="card">
+									<div className="row">
+										<div className="col-6">
+											<TextInput id="firstName" label="First Name" isRequired />
+										</div>
+										<div className="col-6">
+											<TextInput id="lastName" label="Last Name" isRequired />
+										</div>
+									</div>
+									<div className="row">
+										<div className="col">
+											<TextInput id="company" label="Company" />
+										</div>
+									</div>
+									<div className="row">
+										<div className="col">
+											<TextInput id="email" label="Email Address" />
+										</div>
+									</div>
+									<div className="row">
+										<div className="col">
+											<TextInput id="phone" label="Phone Number" />
+										</div>
+									</div>
+									<div className="row">
+										<div className="col">
+											<TextInput
+												id="numberOfEmployees"
+												label="Number of Employees"
+											/>
+										</div>
+									</div>
+									<div className="row">
+										<div className="col">
+											<TextInput
+												id="source"
+												label="How did you hear about Uprise?"
+											/>
+										</div>
+									</div>
+								</div>
+								<div className="row mgn-t-20">
+									<div className="col">
+										<PrimaryButton large> Submit</PrimaryButton>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ContactContentContainer>
+	)
 }
 
 export default ContactSection
 
 ContactSection.propTypes = {
-  bgPrimary: PropTypes.bool
+	bgPrimary: PropTypes.bool
 }
 
 ContactSection.defaultProps = {
-  bgPrimary: true
+	bgPrimary: true
 }

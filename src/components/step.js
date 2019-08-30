@@ -40,31 +40,31 @@ const StepInfo = Styled.div`
   }
 `
 function Step({ title, stepNumber, showStepNumber, body, imageSrc, image }) {
-  return (
-    <StepContainer className="row">
-      <div className="col-12 col-lg-6">
-        <StepImage>
-          {imageSrc && <img src={imageSrc} alt={title} />}
-          {image && <Img fluid={image} alt={title} />}
-        </StepImage>
-      </div>
-      <div className="col-12 col-lg-6 align-self-center">
-        <StepInfo>
-          {stepNumber && showStepNumber && <Note>{`STEP ${stepNumber}`}</Note>}
-          <Heading2>{title}</Heading2>
-          <BodyText>{body}</BodyText>
-        </StepInfo>
-      </div>
-    </StepContainer>
-  )
+	return (
+		<StepContainer className="row">
+			<div className="col-12 col-lg-6">
+				<StepImage>
+					{imageSrc && <img src={imageSrc} alt={title} />}
+					{image && <Img fluid={image} alt={title} />}
+				</StepImage>
+			</div>
+			<div className="col-12 col-lg-6 align-self-center">
+				<StepInfo>
+					{stepNumber && showStepNumber && <Note>{`STEP ${stepNumber}`}</Note>}
+					<Heading2>{title}</Heading2>
+					<BodyText>{body}</BodyText>
+				</StepInfo>
+			</div>
+		</StepContainer>
+	)
 }
 
 export default Step
 
 Step.propType = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
-  stepNumber: PropTypes.number,
-  showStepNumber: PropTypes.bool
+	title: PropTypes.string.isRequired,
+	body: PropTypes.string.isRequired,
+	imageSrc: PropTypes.string.isRequired,
+	stepNumber: PropTypes.number,
+	showStepNumber: PropTypes.bool
 }

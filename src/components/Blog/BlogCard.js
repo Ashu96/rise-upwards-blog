@@ -47,32 +47,32 @@ const BlogCardContainer = Styled.div`
 `
 
 function BlogCard({ title, media, body, date, category, slug }) {
-  return (
-    <BlogCardContainer
-      role="button"
-      tabIndex="0"
-      onClick={() => navigate(`/blog/${slug}`)}
-    >
-      <div className="media">{media && <Img fluid={media} alt=''/>}</div>
-      <div className="content">
-        <BodyText className="title" bold color={primary.charcoal}>
-          {title}
-        </BodyText>
-        <Note className="body" color={extended.charcoal.one}>
-          {body}
-        </Note>
-        <div className="meta">
-          <Note color={extended.charcoal.three}>
-            {date} | {category}
-          </Note>
-        </div>
-      </div>
-    </BlogCardContainer>
-  )
+	return (
+		<BlogCardContainer
+			role="button"
+			tabIndex="0"
+			onClick={() => navigate(`/blog/${slug}`)}
+		>
+			<div className="media">{media && <Img fluid={media} alt="" />}</div>
+			<div className="content">
+				<BodyText className="title" bold color={primary.charcoal}>
+					{title}
+				</BodyText>
+				<Note className="body" color={extended.charcoal.one}>
+					{body}
+				</Note>
+				<div className="meta">
+					<Note color={extended.charcoal.three}>
+						{date} | {category}
+					</Note>
+				</div>
+			</div>
+		</BlogCardContainer>
+	)
 }
 
 export default BlogCard
 
 BlogCard.propTypes = {
-  title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired
 }

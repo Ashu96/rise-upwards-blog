@@ -11,7 +11,7 @@ import Icon from './Icon'
 
 const SectionWithContentInCenterContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
+		props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
   & .content {
     display: flex;
@@ -27,46 +27,46 @@ const SectionWithContentInCenterContainer = Styled.div`
 `
 
 function SectionWithContentInCenter({ title, body, action, bgPrimary }) {
-  return (
-    <SectionWithContentInCenterContainer
-      className="container-fluid"
-      bgPrimary={bgPrimary}
-    >
-      <Container>
-        <Row>
-          <Col>
-            <div className="content">
-              <Heading2 className="mgn-b-20">{title}</Heading2>
-              <BodyText>{body}</BodyText>
-              {action && (
-                <PrimaryButton
-                  className="mgn-t-50"
-                  onClick={() => navigate(action.link)}
-                >
-                  {action.label}
-                  <Icon fill={backgrounds.white} />
-                </PrimaryButton>
-              )}
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </SectionWithContentInCenterContainer>
-  )
+	return (
+		<SectionWithContentInCenterContainer
+			className="container-fluid"
+			bgPrimary={bgPrimary}
+		>
+			<Container>
+				<Row>
+					<Col>
+						<div className="content">
+							<Heading2 className="mgn-b-20">{title}</Heading2>
+							<BodyText>{body}</BodyText>
+							{action && (
+								<PrimaryButton
+									className="mgn-t-50"
+									onClick={() => navigate(action.link)}
+								>
+									{action.label}
+									<Icon fill={backgrounds.white} />
+								</PrimaryButton>
+							)}
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		</SectionWithContentInCenterContainer>
+	)
 }
 
 SectionWithContentInCenter.propTypes = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string,
-  action: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired
-  }),
-  bgPrimary: PropTypes.bool
+	title: PropTypes.string.isRequired,
+	body: PropTypes.string,
+	action: PropTypes.shape({
+		label: PropTypes.string.isRequired,
+		link: PropTypes.string.isRequired
+	}),
+	bgPrimary: PropTypes.bool
 }
 
 SectionWithContentInCenter.defaultProps = {
-  bgPrimary: false
+	bgPrimary: false
 }
 
 export default SectionWithContentInCenter

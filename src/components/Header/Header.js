@@ -89,65 +89,64 @@ const HeaderContainer = Styled.header`
 `
 
 function Header({ bgPrimary, siteTitle, navItems, allNavItems }) {
-  
-  const leftHSNavItems = navItems.filter(item => !item.RHS)
-  const rightHSNavItems = navItems.filter(item => item.RHS)
+	const leftHSNavItems = navItems.filter(item => !item.RHS)
+	const rightHSNavItems = navItems.filter(item => item.RHS)
 
-  return (
-    <SectionWrapper className="container-fluid" bgPrimary={bgPrimary}>
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <meta charSet="utf-8" />
-        <meta
-          name="description"
-          content={`Uprise is a proactive and science-based Employee Assistance Program (EAP)
+	return (
+		<SectionWrapper className="container-fluid" bgPrimary={bgPrimary}>
+			<Helmet htmlAttributes={{ lang: 'en' }}>
+				<meta charSet="utf-8" />
+				<meta
+					name="description"
+					content={`Uprise is a proactive and science-based Employee Assistance Program (EAP)
 provider in Australia.`}
-        />
-        <title>{siteTitle}</title>
-      </Helmet>
-      <HeaderContainer>
-        <Row>
-          <Col className="col-md-8">
-            <ul>
-              {leftHSNavItems.map(item => {
-                const NavItem = getNavItem(item)
-                return (
-                  <NavItem
-                    key={item.id}
-                    item={item}
-                    navItems={allNavItems[item.id]}
-                  />
-                )
-              })}
-            </ul>
-          </Col>
-          <Col className="col-md-4">
-            <ul>
-              {rightHSNavItems.map(item => {
-                const NavItem = getNavItem(item)
-                return (
-                  <NavItem
-                    key={item.id}
-                    item={item}
-                    allNavItems={allNavItems}
-                  />
-                )
-              })}
-            </ul>
-          </Col>
-        </Row>
-      </HeaderContainer>
-    </SectionWrapper>
-  )
+				/>
+				<title>{siteTitle}</title>
+			</Helmet>
+			<HeaderContainer>
+				<Row>
+					<Col className="col-md-8">
+						<ul>
+							{leftHSNavItems.map(item => {
+								const NavItem = getNavItem(item)
+								return (
+									<NavItem
+										key={item.id}
+										item={item}
+										navItems={allNavItems[item.id]}
+									/>
+								)
+							})}
+						</ul>
+					</Col>
+					<Col className="col-md-4">
+						<ul>
+							{rightHSNavItems.map(item => {
+								const NavItem = getNavItem(item)
+								return (
+									<NavItem
+										key={item.id}
+										item={item}
+										allNavItems={allNavItems}
+									/>
+								)
+							})}
+						</ul>
+					</Col>
+				</Row>
+			</HeaderContainer>
+		</SectionWrapper>
+	)
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
-  bgPrimary: PropTypes.bool
+	siteTitle: PropTypes.string,
+	bgPrimary: PropTypes.bool
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
-  bgPrimary: true
+	siteTitle: ``,
+	bgPrimary: true
 }
 
 export default Header

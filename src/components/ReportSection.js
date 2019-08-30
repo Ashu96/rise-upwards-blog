@@ -8,7 +8,7 @@ import { backgrounds } from '../constants/colors'
 
 const ReportSectionContainer = Styled.div`
   background-color: ${props =>
-    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
+		props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
   padding-top: 60px;
   padding-bottom: 60px;
 
@@ -23,33 +23,33 @@ const ReportSectionContainer = Styled.div`
 `
 
 function ReportSection({ title, reports, bgPrimary }) {
-  const [left, right] = reports
+	const [left, right] = reports
 
-  return (
-    <ReportSectionContainer bgPrimary={bgPrimary} className="container-fluid">
-      <Container>
-        <Row className="heading">
-          <Col>
-            <Heading2 textCenter>{title}</Heading2>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="col-lg-6">
-            <Report {...left} />
-          </Col>
-          <Col className="col-lg-6">
-            <Report {...right} />
-          </Col>
-        </Row>
-      </Container>
-    </ReportSectionContainer>
-  )
+	return (
+		<ReportSectionContainer bgPrimary={bgPrimary} className="container-fluid">
+			<Container>
+				<Row className="heading">
+					<Col>
+						<Heading2 textCenter>{title}</Heading2>
+					</Col>
+				</Row>
+				<Row>
+					<Col className="col-lg-6">
+						<Report {...left} />
+					</Col>
+					<Col className="col-lg-6">
+						<Report {...right} />
+					</Col>
+				</Row>
+			</Container>
+		</ReportSectionContainer>
+	)
 }
 
 export default ReportSection
 
 ReportSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  reports: PropTypes.array.isRequired,
-  bgPrimary: PropTypes.bool
+	title: PropTypes.string.isRequired,
+	reports: PropTypes.array.isRequired,
+	bgPrimary: PropTypes.bool
 }

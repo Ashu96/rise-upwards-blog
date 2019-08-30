@@ -21,50 +21,50 @@ const AwardContentContainer = Styled.div`
 `
 
 function ContentWithImageList({ id }) {
-  const data = useStaticQuery(graphql`
-    {
-      allImageList: allStrapiImagelist {
-        edges {
-          node {
-            id
-            strapiId
-            title
-            images {
-              id
-              url
-            }
-          }
-        }
-      }
-    }
-  `)
+	const data = useStaticQuery(graphql`
+		{
+			allImageList: allStrapiImagelist {
+				edges {
+					node {
+						id
+						strapiId
+						title
+						images {
+							id
+							url
+						}
+					}
+				}
+			}
+		}
+	`)
 
-  const currentHeroSection = data.allImageList.edges.filter(
-    edge => edge.node.strapiId === id.trim()
-  )
+	const currentHeroSection = data.allImageList.edges.filter(
+		edge => edge.node.strapiId === id.trim()
+	)
 
-  const { node } = currentHeroSection[0]
-  const { title, images } = node
-  return (
-    <div
-      className="container-fluid"
-      style={{
-        borderBottom: '1px solid #cecbfc',
-        borderTop: '1px solid #cecbfc'
-      }}
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <AwardContentContainer className="d-flex justify-content-center align-items-center">
-              <Heading2>{title}</Heading2>
-              <List images={images} />
-            </AwardContentContainer>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+	const { node } = currentHeroSection[0]
+	const { title, images } = node
+	return (
+		<div
+			className="container-fluid"
+			style={{
+				borderBottom: '1px solid #cecbfc',
+				borderTop: '1px solid #cecbfc'
+			}}
+		>
+			<div className="container">
+				<div className="row">
+					<div className="col">
+						<AwardContentContainer className="d-flex justify-content-center align-items-center">
+							<Heading2>{title}</Heading2>
+							<List images={images} />
+						</AwardContentContainer>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default ContentWithImageList
@@ -95,18 +95,18 @@ const ListItem = Styled.li`
 `
 
 function List({ images }) {
-  return (
-    <ListContainer>
-      {images.map(image => (
-        <ListItem key={image.id}>
-          <img
-            src={getPublicURL(image.url || image.publicURL)}
-            alt="featured in"
-          />
-        </ListItem>
-      ))}
-    </ListContainer>
-  )
+	return (
+		<ListContainer>
+			{images.map(image => (
+				<ListItem key={image.id}>
+					<img
+						src={getPublicURL(image.url || image.publicURL)}
+						alt="featured in"
+					/>
+				</ListItem>
+			))}
+		</ListContainer>
+	)
 }
 
 // export default List;

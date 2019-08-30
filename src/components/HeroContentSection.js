@@ -47,66 +47,66 @@ const HeroContentContainer = Styled.div`
 `
 
 function HeroContent({ title, subTitle, body, actions, image, imageSrc }) {
-  return (
-    <HeroContentContainer className="container-fluid">
-      <Container>
-        <Row>
-          <Col>
-            <div className="hero__heading">
-              <Heading1 className="mgn-b-10">{title}</Heading1>
-              <Heading4 className="mgn-b-20">{subTitle}</Heading4>
-              <BodyText>{body}</BodyText>
-              <div className="hero__cta-container">
-                {actions.primary && (
-                  <PrimaryButton onClick={() => navigate(actions.primary.link)}>
-                    {actions.primary.label}
-                  </PrimaryButton>
-                )}
-                {actions.secondary && (
-                  <OutLineButton
-                    onClick={() => navigate(actions.secondary.link)}
-                  >
-                    {actions.secondary.label}
-                  </OutLineButton>
-                )}
-              </div>
-              <div className="hero__image-container">
-                {imageSrc && <img alt="hero" src={imageSrc} />}
-                {image && <Img alt="hero" fluid={image} />}
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </HeroContentContainer>
-  )
+	return (
+		<HeroContentContainer className="container-fluid">
+			<Container>
+				<Row>
+					<Col>
+						<div className="hero__heading">
+							<Heading1 className="mgn-b-10">{title}</Heading1>
+							<Heading4 className="mgn-b-20">{subTitle}</Heading4>
+							<BodyText>{body}</BodyText>
+							<div className="hero__cta-container">
+								{actions.primary && (
+									<PrimaryButton onClick={() => navigate(actions.primary.link)}>
+										{actions.primary.label}
+									</PrimaryButton>
+								)}
+								{actions.secondary && (
+									<OutLineButton
+										onClick={() => navigate(actions.secondary.link)}
+									>
+										{actions.secondary.label}
+									</OutLineButton>
+								)}
+							</div>
+							<div className="hero__image-container">
+								{imageSrc && <img alt="hero" src={imageSrc} />}
+								{image && <Img alt="hero" fluid={image} />}
+							</div>
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		</HeroContentContainer>
+	)
 }
 
 HeroContent.propTypes = {
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
-  body: PropTypes.string,
-  actions: PropTypes.shape({
-    primary: PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired
-    }).isRequired,
-    secondary: PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired
-    })
-  }),
-  image: PropTypes.object,
-  imageSrc: PropTypes.string
+	title: PropTypes.string.isRequired,
+	subTitle: PropTypes.string,
+	body: PropTypes.string,
+	actions: PropTypes.shape({
+		primary: PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			link: PropTypes.string.isRequired
+		}).isRequired,
+		secondary: PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			link: PropTypes.string.isRequired
+		})
+	}),
+	image: PropTypes.object,
+	imageSrc: PropTypes.string
 }
 
 HeroContent.defaultProps = {
-  actions: {
-    primary: {
-      label: 'Book a demo',
-      link: () => navigate('/')
-    }
-  }
+	actions: {
+		primary: {
+			label: 'Book a demo',
+			link: () => navigate('/')
+		}
+	}
 }
 
 export default HeroContent

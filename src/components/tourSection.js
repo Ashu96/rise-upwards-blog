@@ -30,86 +30,85 @@ const TourContentContainer = Styled.div`
 `
 
 function TourSection({ id }) {
+	const data = useStaticQuery(graphql`
+		{
+			allStepSections: allStrapiStepsection {
+				edges {
+					node {
+						id
+						showCurve
+						strapiId
+						title
+						steps {
+							id
+							order
+							showStepNumber
+							title
+							body
+							image {
+								childImageSharp {
+									fluid(maxWidth: 485) {
+										...GatsbyImageSharpFluid
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`)
 
-  const data = useStaticQuery(graphql`
-    {
-      allStepSections: allStrapiStepsection {
-        edges {
-          node {
-            id
-            showCurve
-            strapiId
-            title
-            steps {
-              id
-              order
-              showStepNumber
-              title
-              body
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 485) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+	if (!data) {
+		return null
+	}
 
-  if (!data) {
-    return null
-  }
+	const { allStepSections } = data
 
-  const { allStepSections } = data
+	const currentData = allStepSections.edges.filter(
+		edge => edge.node.strapiId === id.trim()
+	)
 
-  const currentData = allStepSections.edges.filter(
-    edge => edge.node.strapiId === id.trim()
-  )
+	const { node } = currentData && currentData.length && currentData[0]
+	if (!node) {
+		return null
+	}
 
-  const { node } = currentData && currentData.length && currentData[0]
-  if (!node) {
-    return null
-  }
-
-  const { title, steps } = node
-  return (
-    <div
-      className="container-fluid"
-      style={{
-        borderBottom: '1px solid #cecbfc',
-        borderTop: '1px solid #cecbfc'
-      }}
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <TourContentContainer className="d-flex justify-content-center align-items-center">
-              <Heading1 textCenter>{title}</Heading1>
-              <div className="steps">
-                {orderBy(steps, ['order'], ['asc']).map(step => {
-                  return (
-                    <Step
-                      key={step.id}
-                      title={step.title}
-                      body={step.body}
-                      stepNumber={step.order}
-                      showStepNumber={step.showStepNumber}
-                      imageSrc={step.image.publicURL}
-                      image={step.image.childImageSharp.fluid}
-                    />
-                  )
-                })}
-              </div>
-            </TourContentContainer>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+	const { title, steps } = node
+	return (
+		<div
+			className="container-fluid"
+			style={{
+				borderBottom: '1px solid #cecbfc',
+				borderTop: '1px solid #cecbfc'
+			}}
+		>
+			<div className="container">
+				<div className="row">
+					<div className="col">
+						<TourContentContainer className="d-flex justify-content-center align-items-center">
+							<Heading1 textCenter>{title}</Heading1>
+							<div className="steps">
+								{orderBy(steps, ['order'], ['asc']).map(step => {
+									return (
+										<Step
+											key={step.id}
+											title={step.title}
+											body={step.body}
+											stepNumber={step.order}
+											showStepNumber={step.showStepNumber}
+											imageSrc={step.image.publicURL}
+											image={step.image.childImageSharp.fluid}
+										/>
+									)
+								})}
+							</div>
+						</TourContentContainer>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default TourSection
