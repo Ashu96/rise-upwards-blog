@@ -1,5 +1,5 @@
 import React from 'react'
-import { BUTTON_TYPES, NAV_ITEM_TYPES, SECTION_TYPES } from '../constants'
+import { BUTTON_TYPES, NAV_ITEM_TYPES, SECTION_TYPES, CARD_TYPES } from '../constants'
 import { PrimaryButton, LinkButton, OutLineButton } from '../styles/buttons'
 import HeroSection from '../components/HeroSection'
 import ContentWithImageList from '../components/ContentWithImageList'
@@ -14,6 +14,9 @@ import {
   NavButton,
   NavDropDown
 } from '../components/Header/NavItems'
+import FeaturedCard from '../components/FeatureCard'
+import SupportCard from '../components/SupportCard'
+import ContactBanner from '../components/ContactBanner'
 
 export function getComponent(type) {
   switch (type) {
@@ -31,6 +34,8 @@ export function getComponent(type) {
       return SingleMediaWithParagraphAndLink
     case SECTION_TYPES.REPORTS:
       return Reports
+    case SECTION_TYPES.CONTACT_BANNER:
+      return ContactBanner
     default:
       return () => <h1>No component found</h1>
   }
@@ -89,5 +94,14 @@ export function getNavItem(item) {
       return NavDropDown
     default:
       return NavLink
+  }
+}
+
+export function getCard(type) {
+  switch(type) {
+    case CARD_TYPES.FEATURE_CARD:
+      return FeaturedCard
+    case CARD_TYPES.SUPPORT_CARD:
+      return SupportCard
   }
 }
