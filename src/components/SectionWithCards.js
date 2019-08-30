@@ -3,18 +3,17 @@ import Styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import { backgrounds } from '../constants/colors'
 import { Heading2 } from '../styles/text'
-import FeatureCard from './FeatureCard'
-import { extractQueryData } from '../utils'
+import { SectionWrapper, Row, Col } from '../styles/grid'
+import { extractQueryData, getCard } from '../utils'
 
-const FeatureSectionContainer = Styled.div`
-  background-color: ${props =>
-    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
-
-  margin-top: 100px;
-  margin-bottom: 120px;
-  text-align: center;
+const SectionWithCardsContainer = Styled.div`
+  
+  & .col {
+    margin-bottom: 32px;
+  }
 
   & .heading {
+    text-align: center;
     display: flex;
     flex-direction: column;
     margin-bottom: 64px;
@@ -41,6 +40,7 @@ function SectionWithCards({ id, bgPrimary }) {
               id
               order
               title
+              type
               image {
                 childImageSharp {
                   fluid(maxWidth: 285) {
@@ -52,6 +52,7 @@ function SectionWithCards({ id, bgPrimary }) {
             strapiId
             id
             title
+            two_in_row
           }
         }
       }
@@ -67,39 +68,44 @@ function SectionWithCards({ id, bgPrimary }) {
     return null
   }
 
-  const { title, cards } = node
+  const { title, cards, two_in_row } = node
 
   return (
-    <FeatureSectionContainer className="container-fluid" bgPrimary={bgPrimary}>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <div className="content">
-              <div className="heading">
-                <Heading2>{title}</Heading2>
-              </div>
-              <div className="row">
-                {cards.map(card => {
-                  return (
-                    <div key={card.id} className="col col-lg-4">
-                      <FeatureCard
-                        title={card.title}
-                        body={card.body}
-                        imageSrc={card.image.publicURL || card.image.url}
-                        imageFluid={
-                          card.image.childImageSharp &&
-                          card.image.childImageSharp.fluid
-                        }
-                      />
-                    </div>
-                  )
-                })}
-              </div>
+    <SectionWrapper
+      bgPrimary={bgPrimary}
+      containerProps={{ style: { paddingBottom: '100px' } }}
+    >
+      <Row>
+        <Col>
+          <SectionWithCardsContainer>
+            <div className="heading">
+              <Heading2>{title}</Heading2>
             </div>
-          </div>
-        </div>
-      </div>
-    </FeatureSectionContainer>
+            <div className="row">
+              {cards.map(card => {
+                const Card = getCard(card.type)
+                return (
+                  <div
+                    key={card.id}
+                    className={`col ${two_in_row ? 'col-lg-6' : 'col-lg-4'}`}
+                  >
+                    <Card
+                      title={card.title}
+                      body={card.body}
+                      media={
+                        card.image.childImageSharp &&
+                        card.image.childImageSharp.fluid
+                      }
+                      large={two_in_row}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+          </SectionWithCardsContainer>
+        </Col>
+      </Row>
+    </SectionWrapper>
   )
 }
 

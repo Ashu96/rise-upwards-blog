@@ -8,6 +8,7 @@ import { Heading2, BodyText } from '../../styles/text'
 import { backgrounds, primary } from '../../constants/colors'
 import Icon from '../Icon'
 import { getButton } from '../../utils'
+import { BUTTON_TYPES } from '../../constants'
 
 const SingleMediaWithParagraphAndLinkContainer = Styled.div`
   background-color: ${props =>
@@ -62,6 +63,7 @@ function SingleMediaWithParagraphAndLink({
   actionType
 }) {
   const Button = getButton(actionType)
+  const shouldMakeIconWhite = actionType === BUTTON_TYPES.PRIMARY
 
   return (
     <SingleMediaWithParagraphAndLinkContainer
@@ -86,7 +88,11 @@ function SingleMediaWithParagraphAndLink({
                   onClick={() => navigate(action.primary.link)}
                 >
                   {action.primary.label}
-                  <Icon fill={primary.purple} />
+                  <Icon
+                    fill={
+                      shouldMakeIconWhite ? backgrounds.white : primary.purple
+                    }
+                  />
                 </Button>
               )}
             </div>
@@ -115,7 +121,7 @@ SingleMediaWithParagraphAndLink.defaultProps = {
   action: {},
   image: null,
   imageFirst: false,
-  actionType:'link',
+  actionType: 'link',
   bgPrimary: false
 }
 
