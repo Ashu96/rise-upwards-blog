@@ -3,13 +3,16 @@ import React from 'react'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { OutLineButton, PrimaryButton } from '../styles/buttons'
+import { backgrounds } from '../constants/colors'
 import { Heading1, Heading4, BodyText } from '../styles/text'
 import { extractQueryData } from '../utils'
 
 const HeroContentContainer = Styled.div`
+  background-color: ${props =>
+    props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
   text-align: ${props => (props.splitScreen ? 'left' : 'center')};
   padding-top: 100px;
-  padding-bottom: 115px;
+  padding-bottom: ${props => (props.noMedia ? '0px' : '100px')};
 
   & .hero__heading {
     display: flex;
@@ -86,7 +89,7 @@ const HeroContentContainer = Styled.div`
   }
 `
 
-function HeroSection({ id }) {
+function HeroSection({ id, bgPrimary }) {
   const data = useStaticQuery(graphql`
     {
       allHeroSection: allStrapiHerosection {
@@ -130,10 +133,17 @@ function HeroSection({ id }) {
     return null
   }
 
-  const { title, subTitle, body, image, imageSrc, action, splitScreen } = node
+  const { title, subTitle, body, image, action, splitScreen } = node
+
+  const noMedia = !image
 
   return (
-    <HeroContentContainer className="container-fluid" splitScreen={splitScreen}>
+    <HeroContentContainer
+      className="container-fluid"
+      bgPrimary={bgPrimary}
+      splitScreen={splitScreen}
+      noMedia={noMedia}
+    >
       <div className="container">
         <div className="row">
           <div className="col">
@@ -161,12 +171,13 @@ function HeroSection({ id }) {
                   )}
                 </div>
               </div>
-              <div className="hero__image-container">
-                {imageSrc && <img alt="hero" src={imageSrc} />}
-                {image && (
-                  <Img fluid={image.childImageSharp.fluid} alt={'hero'} />
-                )}
-              </div>
+              {image && (
+                <div className="hero__image-container">
+                  {image && (
+                    <Img fluid={image.childImageSharp.fluid} alt={'hero'} />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { backgrounds } from '../constants/colors'
-// import {getPublicURL} from '../utils'
 import { Heading3, BodyText } from '../styles/text'
 
 const FeatureCardContainer = Styled.div`
@@ -41,13 +40,12 @@ const FeatureCardContainer = Styled.div`
   }
 `
 
-function FeatureCard({ title, imageSrc, imageFluid, body }) {
+function FeatureCard({ title, media, body }) {
   return (
     <FeatureCardContainer>
       <Heading3>{title}</Heading3>
       <div className="image-container">
-        {/* {imageSrc && <img src={getPublicURL(imageSrc)} alt={title} />} */}
-        {imageFluid && <Img fluid={imageFluid} alt={title} />}
+        {media && <Img fluid={media} alt={title} />}
       </div>
       <BodyText>{body}</BodyText>
     </FeatureCardContainer>
@@ -59,6 +57,6 @@ export default FeatureCard
 FeatureCard.propTypes = {
   title: PropTypes.string.isRequired,
   imageSrc: PropTypes.string,
-  imageFluid: PropTypes.object,
+  media: PropTypes.object,
   body: PropTypes.string.isRequired
 }
