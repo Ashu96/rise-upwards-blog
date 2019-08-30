@@ -1,0 +1,22 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import Styled from 'styled-components'
+
+const <%= componentName %>Container = Styled.div``
+
+function <%= componentName %>() {
+	return (
+		<<%= componentName %>Container>
+      
+		</<%= componentName %>Container>
+	)
+}
+
+export default <%= componentName %>
+
+<%= componentName %>.propTypes = {
+	title: PropTypes.string.isRequired
+}
+<%= componentName %>.defaultTypes = {
+	title: PropTypes.string.isRequired
+}

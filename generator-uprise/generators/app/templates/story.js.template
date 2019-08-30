@@ -1,0 +1,20 @@
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import { withKnobs, text, boolean } from '@storybook/addon-knobs'
+import <%= componentName %> from '<%= componentPath %>'
+
+const stories = storiesOf('Components | <%= componentName %>', module)
+
+// Add the `withKnobs` decorator to add knobs support to your stories.
+// You can also configure `withKnobs` as a global decorator.
+stories.addDecorator(withKnobs)
+
+stories.add(
+	'<%= componentName %>',
+	() => (
+		<<%= componentName %> textCenter={boolean('textCenter', true)}>
+			{text('Text', 'Book a demo')}
+		</<%= componentName %>>
+	),
+	{ notes: { markdown: '##<%= componentName %>\n For page heading' } }
+)
