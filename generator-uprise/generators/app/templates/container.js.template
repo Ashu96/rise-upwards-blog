@@ -1,0 +1,59 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
+import { extractQueryData } from '../../utils'
+import <%= componentName %> from './<%= componentName %>'
+
+function <%= componentName %>Container({ id, bgPrimary }) {
+	const data = useStaticQuery(graphql`
+		{
+			allStrapiSectionwithcontentandimage {
+				edges {
+					node {
+						id
+						strapiId
+						title
+						body
+						imageFirst
+						image {
+							childImageSharp {
+								fixed(width: 285) {
+									...GatsbyImageSharpFixed
+								}
+							}
+						}
+						action {
+							primary {
+								label
+								link
+							}
+						}
+						actionType
+					}
+				}
+			}
+		}
+	`)
+
+	const node = extractQueryData({
+		data: data.allStrapiSectionwithcontentandimage,
+		id
+	})
+
+	if (!node) {
+		return null
+	}
+
+	return <<%= componentName %> bgPrimary={bgPrimary} {...node} />
+}
+
+<%= componentName %>Container.propTypes = {
+	bgPrimary: PropTypes.bool,
+	id: PropTypes.string.isRequired
+}
+
+<%= componentName %>Container.defaultProps = {
+	bgPrimary: false
+}
+
+export default <%= componentName %>Container
