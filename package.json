@@ -31,7 +31,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "storybook": "start-storybook -s ./public -p 5000",
+    "storybook": "SET NODE_ENV=production && start-storybook -s ./public -p 5000",
+    "build-storybook": "SET NODE_ENV=production && build-storybook -s public",
     "format": "npx prettier --config ./.prettierrc --write src/**/*.js stories/**/*.js"
   },
   "repository": {
