@@ -54,10 +54,10 @@ module.exports = class extends Generator {
 
 		this._writeFile(
 			this.templatePath(STORY_TEMPLATE),
-			this.destinationPath(STORY_DIR, `${componentName}.stories.jsx`),
+			this.destinationPath(STORY_DIR, `${componentName}.stories.js`),
 			{
 				componentName,
-				componentPath: `${COMPONENT_DIR}${componentName}/${componentName}`
+				componentPath: `.${COMPONENT_DIR}${componentName}/${componentName}`
 			}
 		)
 
