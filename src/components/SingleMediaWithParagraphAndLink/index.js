@@ -17,8 +17,8 @@ function SingleMediaWithParagraphAndLinkContainer({ id, bgPrimary }) {
 						imageFirst
 						image {
 							childImageSharp {
-								fluid(maxWidth: 285) {
-									...GatsbyImageSharpFluid
+								fixed(width: 285) {
+									...GatsbyImageSharpFixed
 								}
 							}
 						}
