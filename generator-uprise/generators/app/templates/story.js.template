@@ -40,7 +40,7 @@ const props = {
 stories.add(
 	'<%= componentName %>',
 	() => (
-		<<%= componentName %> textCenter={boolean('textCenter', true)}>
+		<<%= componentName %> {...props} title={text('title', props.title)}>
 			{text('Text', 'Book a demo')}
 		</<%= componentName %>>
 	),
