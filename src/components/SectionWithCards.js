@@ -93,6 +93,7 @@ function SectionWithCards({ id, bgPrimary }) {
 											title={card.title}
 											body={card.body}
 											media={
+												card.image &&
 												card.image.childImageSharp &&
 												card.image.childImageSharp.fluid
 											}

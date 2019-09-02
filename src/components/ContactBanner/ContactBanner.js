@@ -114,11 +114,10 @@ ContactBanner.propTypes = {
 }
 
 ContactBanner.defaultProps = {
-	title: `Get in touch with Uprise`,
-	phone: `1300 209 371`,
-	email: `team@uprise.co`,
-	chat: `please use the chat bubble in the bottom right of screen`,
-
+	title: 'Get in touch with Uprise',
+	phone: '1300 209 371',
+	email: 'team@uprise.co',
+	chat: 'please use the chat bubble in the bottom right of screen',
 	media: {
 		base64:
 			'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsSAAALEgHS3X78AAAE6klEQVQ4y22U60+TdxTHq8m27MX+gb3aK7Ms2RaTJWbxhctEEW/Mu0x0RkGRi0OBuVVRh0IEjaXKRRG5iQrScm8pFKiUSyn3Si+sUHqhLW1pn95toc/z+6449dW+ycn55iTnk/PinMNiRSWzEZbWtbZh3SsmZZ8sUOEdBj/yjT6m3eClZ4w+LBq8WFj0kDHNClM/YsIF8Vx4E+u9JCpm4wfPktvx0c+6mL1qL/rmg3AYfCRgfQvKScNm9BCrwQPLvAOWWQcMo0ZiGDdjSm5CoWD67Zfrvd1T76EAeZen7PRVhRs2h1bm8Y43UMYgFkfnbOam7gn7kh+mBQqmwmyhn8vptsysYII/ZFHxRxyLwzpIxIrIlnWGaIL8Bx1dJqmTdsY+64VKWV3kNz25Gr...',

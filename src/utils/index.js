@@ -25,37 +25,37 @@ import ContactBanner from '../components/ContactBanner'
 
 export function getComponent(type) {
 	switch (type) {
-		case SECTION_TYPES.HERO_SECTION:
-			return HeroSection
-		case SECTION_TYPES.MULTIPLE_MEDIA_WITH_CAPTION:
-			return ContentWithImageList
-		case SECTION_TYPES.SINGLE_MEDIA_WITH_CAPTION_AND_PARAGRAPH:
-			return TourSection
-		case SECTION_TYPES.WITH_CARDS:
-			return SectionWithCards
-		case SECTION_TYPES.HEADING_WITH_SINGLE_MEDIA_AND_BUTTON:
-			return HeadingWithSingleMediaAndButton
-		case SECTION_TYPES.SINGLE_MEDIA_WITH_PARAGRAPH_AND_LINK:
-			return SingleMediaWithParagraphAndLink
-		case SECTION_TYPES.REPORTS:
-			return Reports
-		case SECTION_TYPES.CONTACT_BANNER:
-			return ContactBanner
-		default:
-			return () => <h1>No component found</h1>
+	case SECTION_TYPES.HERO_SECTION:
+		return HeroSection
+	case SECTION_TYPES.MULTIPLE_MEDIA_WITH_CAPTION:
+		return ContentWithImageList
+	case SECTION_TYPES.SINGLE_MEDIA_WITH_CAPTION_AND_PARAGRAPH:
+		return TourSection
+	case SECTION_TYPES.WITH_CARDS:
+		return SectionWithCards
+	case SECTION_TYPES.HEADING_WITH_SINGLE_MEDIA_AND_BUTTON:
+		return HeadingWithSingleMediaAndButton
+	case SECTION_TYPES.SINGLE_MEDIA_WITH_PARAGRAPH_AND_LINK:
+		return SingleMediaWithParagraphAndLink
+	case SECTION_TYPES.REPORTS:
+		return Reports
+	case SECTION_TYPES.CONTACT_BANNER:
+		return ContactBanner
+	default:
+		return () => <h1>No component found</h1>
 	}
 }
 
 export function getButton(type) {
 	switch (type) {
-		case BUTTON_TYPES.LINK:
-			return LinkButton
-		case BUTTON_TYPES.PRIMARY:
-			return PrimaryButton
-		case BUTTON_TYPES.OUTLINE:
-			return OutLineButton
-		default:
-			return props => <PrimaryButton {...props} secondary />
+	case BUTTON_TYPES.LINK:
+		return LinkButton
+	case BUTTON_TYPES.PRIMARY:
+		return PrimaryButton
+	case BUTTON_TYPES.OUTLINE:
+		return OutLineButton
+	default:
+		return props => <PrimaryButton {...props} secondary />
 	}
 }
 
@@ -91,24 +91,24 @@ export function getSlugFromTitle(title) {
 
 export function getNavItem(item) {
 	switch (item.type) {
-		case NAV_ITEM_TYPES.LOGO:
-			return NavLogo
-		case NAV_ITEM_TYPES.BUTTON:
-			return NavButton
-		case NAV_ITEM_TYPES.DROP_DOWN:
-			return NavDropDown
-		default:
-			return NavLink
+	case NAV_ITEM_TYPES.LOGO:
+		return NavLogo
+	case NAV_ITEM_TYPES.BUTTON:
+		return NavButton
+	case NAV_ITEM_TYPES.DROP_DOWN:
+		return NavDropDown
+	default:
+		return NavLink
 	}
 }
 
 export function getCard(type) {
 	switch (type) {
-		case CARD_TYPES.FEATURE_CARD:
-			return FeaturedCard
-		case CARD_TYPES.SUPPORT_CARD:
-			return SupportCard
-		default:
-			return FeaturedCard
+	case CARD_TYPES.FEATURE_CARD:
+		return FeaturedCard
+	case CARD_TYPES.SUPPORT_CARD:
+		return SupportCard
+	default:
+		return FeaturedCard
 	}
 }
