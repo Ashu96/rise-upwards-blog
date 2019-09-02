@@ -59,8 +59,15 @@ export function getButton(type) {
 	}
 }
 
+function getStrapiURL() {
+	console.log(`Env: ${process.env.NODE_ENV}`)
+	return process.env.NODE_ENV === 'development'
+		? 'http://localhost:1337'
+		: 'http://testing-marketing.uprise.co'
+}
+
 export function getPublicURL(url) {
-	return `${process.env.IMAGE_BASE_URL}${url}`
+	return `${getStrapiURL()}${url}`
 }
 
 export function extractQueryData({ data, id }) {
